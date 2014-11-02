@@ -1,0 +1,80 @@
+html, body {
+  margin-right: 10px;
+  color: black;
+  font-size: 1em;
+  font-family: helvetica, sans-serif;
+}
+
+.container {
+  width: 90%;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    margin-right: 20px;
+  }
+}
+
+p {
+  margin: 0px;
+}
+
+svg {
+  border: 2px solid rgba(100, 100, 100, 0.5);
+  border-radius: 10px;
+  background-color: rgba(45, 45, 45, 0.5);
+}
+
+.chart {
+  padding: 15px;
+}
+
+text {
+  font-size: 10px;
+  pointer-events: none;
+  fill: #fff;
+}
+
+#loading {
+  font-size: 22px;
+  fill: grey;
+}
+
+.number {
+  font-size: 32px;
+  fill: #fff;
+  opacity: .8;
+}
+
+
+
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}

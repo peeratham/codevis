@@ -1,0 +1,67 @@
+{
+  "name": "root",
+  "children": [
+    {
+      "name": "app",
+      "children": [
+        {
+          "name": "app.js",
+          "size": 200,
+          "language": "Javascript"
+        },
+        {
+          "name": "dashboard",
+          "children": [
+            {
+              "name": "public",
+              "children": [
+                {
+                  "name": "stylesheets",
+                  "children": [
+                    {
+                      "name": "bootstrap.css",
+                      "size": 20,
+                      "language": "CSS"
+                    },
+                    {
+                      "name": "style.css",
+                      "size": 30,
+                      "language": "CSS"
+                    }
+                  ],
+                  "size": 50
+                }
+              ],
+              "size": 50
+            },
+            {
+              "name": "dashapp.js",
+              "language": "Javascript",
+              "size": 80
+            }
+          ],
+          "size": 100
+        },
+        {
+          "name": "lib",
+          "children": [
+            {
+              "name": "d3.min.js",
+              "size": 200,
+              "language": "Javascript"
+            },
+            {
+              "name": "angular.js",
+              "size": 500,
+              "language": "Javascript"
+            }
+          ],
+          "size": 700
+        }
+      ],
+      "size": 1000
+    }
+  ],
+  "nbFiles": 6,
+  "size": 1030
+}
