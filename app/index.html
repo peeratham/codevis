@@ -21,7 +21,7 @@
   </div>
   <div class="control-panel">
     <div class="url-box">
-      <input type="text" ng-model="gitURL" placeholder="https://github.com/mbostock/d3">
+      <input type="text" ng-model="projectName" placeholder="https://github.com/mbostock/d3">
       <button>Visualize</button>
     </div>
   </div>
@@ -47,7 +47,7 @@
         <nodelink-Chart></nodelink-Chart>
         <!-- search below diagram -->
         <div class="row">
-          <input type="text">
+          <input type="text ng-model="projectName">
           <button>Search</button>
         </div>
 

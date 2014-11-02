@@ -6,20 +6,9 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 	function(ProjectTree) {
 		var link = function(scope, element, attrs){
 			
-			// var svg = d3.select(element[0]).append('svg')
-			// 			.attr('width', '100%')
-			//     		.attr('height', '500px');
-
-			
-			// var createCodeFlower = function(json, selector) {
-			//       // remove previous flower to save memory
-			//       // adapt layout size to the total number of elements
-			//       // create a new CodeFlower
-			//       currentCodeFlower = new CodeFlower(selector, '100%', 500).update(json);
-			//   };
-			// createCodeFlower(ProjectTree.query(), element[0]);
-			
-			
+			ProjectTree.query(function(data) {
+				var currentCodeFlower = new CodeFlower(element[0], 500, 500).update(data);
+			});
 
 			// ----Begin Code Flower----//			    		
 			var CodeFlower = function(selector, w, h) {
@@ -175,15 +164,9 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 			};
 
 			// ----End Code Flower----//
-		var createCodeFlower = function(json) {
-	       // remove previous flower to save memory
-	       // adapt layout size to the total number of elements
-	       // create a new CodeFlower
-	       var currentCodeFlower = new CodeFlower(element[0], 500, 500).update(json);
-	   	};
-	   		d3.json('data/structure.json', createCodeFlower);
 
-			// var currentCodeFlower = new CodeFlower(element[0], 500,500).update(scope.projectTree);
+
+
 		};
 
 		return{
