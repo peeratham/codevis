@@ -42,7 +42,9 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 			  this.json.y = this.h / 2;
 
 			  var nodes = this.flatten(this.json);
+			  //console.log(nodes);
 			  var links = d3.layout.tree().links(nodes);
+			  //console.log(links);
 			  var total = nodes.length || 1;
 
 			  // remove existing text (will readd it afterwards to be sure it's on top)
@@ -105,20 +107,32 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 
 			CodeFlower.prototype.flatten = function(root) {
 			  var nodes = [], i = 0;
-
+			  var path ='';
 			  function recurse(node) {
+			  	
 			    if (node.children) {
-			      node.size = node.children.reduce(function(p, v) {
+			    	//generate node.path that has children
+			    	node.path = path+'/'+node.name;
+			  		path = path+'/'+node.name;
+
+			      node.size = node.children.reduce(function(p, v) {			      	
 			        return p + recurse(v);
 			      }, 0);
 			    }
+			    else{
+			    	//generat node.path with no children
+			    	node.path = path+'/'+node.name;
+			    }
 			    if (!node.id) node.id = ++i;
 			    nodes.push(node);
+			    console.log(node);
 			    return node.size;
 			  }
 
 			  root.size = recurse(root);
+
 			  return nodes;
+			  // console.log(nodes);
 			};
 
 			CodeFlower.prototype.click = function(d) {
