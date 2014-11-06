@@ -9,4 +9,12 @@ codevisServices.factory('ProjectTree', ['$resource',
 		});
 	}]);
 
+
+codevisServices.factory('ProjectEvolutionData', ['$resource',
+	function($resource){
+		//change data here
+		return $resource('data/:path.json', {}, {
+			query: {method:'GET', params:{path:'structure'}}
+		});
+	}]);
 	

@@ -45,8 +45,6 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 			  var links = d3.layout.tree().links(nodes);
 			  var total = nodes.length || 1;
 
-			  console.log(links);
-
 			  // remove existing text (will readd it afterwards to be sure it's on top)
 			  this.svg.selectAll("text").remove();
 

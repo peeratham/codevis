@@ -9,6 +9,18 @@ codevisControllers.controller('mainCtrl',['$scope','$window','ProjectTree',
 		$scope.projectName = 'D3';
 		$scope.projectTree = ProjectTree.query();
 		
-		console.log($scope.projectTree);
 
 	}]);
+
+codevisControllers.controller('aceCtrl', [ '$scope', function($scope) {
+
+  $scope.aceLoaded = function(_editor) {
+    // Options
+    _editor.setReadOnly(true);
+  };
+
+  $scope.aceChanged = function(e) {
+    //
+  };
+
+}]);
