@@ -42,7 +42,7 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 			  this.json.y = this.h / 2;
 
 			  var nodes = this.flatten(this.json);
-			  //console.log(nodes);
+			  console.log(nodes);
 			  var links = d3.layout.tree().links(nodes);
 			  //console.log(links);
 			  var total = nodes.length || 1;
@@ -59,7 +59,7 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 
 			  // Update the links
 			  this.link = this.svg.selectAll("line.link")
-			    .data(links, function(d) { return d.target.name; });
+			    .data(links, function(d) { return d.target.path; });
 
 			  // Enter any new links
 			  this.link.enter().insert("svg:line", ".node")
@@ -74,7 +74,7 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 
 			  // Update the nodes
 			  this.node = this.svg.selectAll("circle.node")
-			    .data(nodes, function(d) { return d.name; })
+			    .data(nodes, function(d) { return d.path; })
 			    .classed("collapsed", function(d) { return d._children ? 1 : 0; });
 
 			  this.node.transition()
@@ -95,7 +95,6 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 
 			  // Exit any old nodes
 			  this.node.exit().remove();
-
 			  this.text = this.svg.append('svg:text')
 			    .attr('class', 'nodetext')
 			    .attr('dy', 0)
@@ -125,7 +124,7 @@ codevisComponents.directive('nodelinkChart',['ProjectTree',
 			    }
 			    if (!node.id) node.id = ++i;
 			    nodes.push(node);
-			    console.log(node);
+			    //console.log(node);
 			    return node.size;
 			  }
 
