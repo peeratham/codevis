@@ -16,7 +16,7 @@
               "name": "public",
               "children": [
                 {
-                  "name": "stylesheets",
+                  "name": "app.js",
                   "children": [
                     {
                       "name": "bootstrap.css",
