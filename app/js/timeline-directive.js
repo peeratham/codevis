@@ -11,7 +11,10 @@ codevisComponents.directive('timelineChart',['ProjectEvolutionData',
 
 var len = data.length;
 var Alljson=[];
-
+var addData = [];
+var delData =[];
+var addNum=0;
+var delNum=0;
 for(var j=0;j<len;j++){
  	var json = {};
 	for(var i=0;i<j+1;i++){		
@@ -33,17 +36,107 @@ for(var j=0;j<len;j++){
 	json.name = 'root';
 	Alljson.push(json);
 
-		if(j<len-1 && data[j+1].action === 'delete'){
-			for(var k=0;k<j+1;k++){
-				if (data[k].path === data[j+1].path && data[k].action === 'create'){
-					data[k].action = 'erase';
-				}
+	if(j<len-1 && data[j+1].action === 'delete'){
+		for(var k=0;k<j+1;k++){
+			if (data[k].path === data[j+1].path && data[k].action === 'create'){
+				data[k].action = 'erase';
 			}
 		}
+	}
 
+	var time=data[j].date;
+	if(j===0){
+		if(data[j].action === 'delete') delNum=1;
+		else addNum=1;
+	}
+	else if(j>0 && time === data[j-1].date){
+		if(data[j].action === 'create' || data[j].action === 'erase'){
+			addNum++;
+		}else{
+			delNum++;
+		}
+	}
+	else if (data[j].action === 'delete'){
+		
+		delData.push([time,delNum]);
+		delNum=1;	
+	}	
+	else{
+		addData.push([time,addNum]);
+		addNum=1;
+	}
 
 }
-var currentTimeFlower = new TimeFlower(element[0], 500, 500).update(Alljson[0]);
+var parseDate = d3.time.format("%Y-%m-%d").parse;
+addData.shift();
+
+console.log(addData[0]);
+
+var xx = d3.time.scale()
+    .range([0, 500]);
+
+var yy = d3.scale.linear()
+    .range([400, 0]);
+
+
+xx.domain(d3.extent(addData, function(d){return parseDate(d[0]);}));
+yy.domain(d3.extent(addData, function(d){return d[1];}));
+
+var xxAxis = d3.svg.axis()
+    .scale(xx)
+    .tickFormat(function(d) { console.log(d);return d; })
+    .ticks(4)
+    .orient("bottom");
+
+var yyAxis = d3.svg.axis()
+    .scale(yy)
+    .orient("left");
+
+var chartsvg = d3.select(element[0]).append('svg')
+		.style("stroke", "#999")
+		.style("fill", "#fff")
+		.attr('class','chartsvg')
+		.attr('width', 600)
+		.attr('height', 500)
+		.append('g')
+		.attr("transform", "translate(" + 50 + "," + 50 + ")");
+
+var chartFunction = d3.svg.line()
+                  .x(function(d) { return xx(parseDate(d[0])); })
+                  .y(function(d) { return yy(d[1]); })
+                  .interpolate("basis");
+                                 
+var chart = chartsvg.append("path")
+               .attr("d", chartFunction(addData))
+               .attr("stroke", "blue")
+               .attr("stroke-width", 2)
+               .attr("fill", "none");
+
+chartsvg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate("+100+"," + 500 + ")")
+      .call(xxAxis);
+
+chartsvg.append("g")
+      .attr("class", "y axis")
+      .call(yyAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 10)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Commit");
+
+  // chartsvg.append("path")
+  //     .datum(data)
+  //     .attr("class", "line")
+  //     .attr("d", line);
+
+
+
+
+
+var currentTimeFlower = new TimeFlower(element[0], 600, 500).update(Alljson[0]);
 
 var moving,
 	minValue=0,
@@ -51,11 +144,11 @@ var moving,
 	currentValue=150,
 	targetValue=150,
 	brushHeight=60,
-	width=500,
+	width=600,
 	alpha=0.25;
 
 var svg = d3.select(element[0]).append('svg')
-			.attr('width', 500)
+			.attr('width', 600)
 			.attr('height', 60);
 
 var formatMinute = d3.format(".0f");
@@ -68,10 +161,11 @@ var x = d3.scale.linear()
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
-    .tickFormat(function(d) { return d+ "m."; })
+    .tickFormat(function(d) {return d; })
     .tickSize(12,0)
-    .tickValues([0, 30, 50, 70, 90, 120, 150])
-    .tickPadding(0);
+    .ticks(1)
+    //.tickValues([0, 100])
+    .tickPadding(1);
 
 var gX = svg.append("g")
         .attr("class", "g-x g-axis")
@@ -79,7 +173,7 @@ var gX = svg.append("g")
         .call(xAxis)
           .select(".domain")
           .select(function() { 
-            console.log(this);return this.parentNode.insertBefore(this.cloneNode(true), this); })
+            return this.parentNode.insertBefore(this.cloneNode(true), this); })
           .attr("class", "g-halo");
 
 var slider,
@@ -180,10 +274,14 @@ function brushed() {
     currentValue = brush.extent()[0];
     handle.attr("cx", x(currentValue))
     .attr("r", 8);
+	if(i===0){
+      	j=0;
+		currentTimeFlower.update([]);
 
-  	if( j<i && 0===i%5){
+    }
+  	if( j<i && 0===i%4){
 
-  		currentTimeFlower.update(Alljson[j]);
+  		currentTimeFlower.update(Alljson[i/4]);
 		//console.log(j);
 		j=i;	
 	}
@@ -221,9 +319,6 @@ function brushed() {
   
   }
 
-
-			});
-
 function getChildren(json) {
   var children = [];
   if (json.language) return children;
@@ -246,15 +341,20 @@ function getChildren(json) {
 
 
 
+
+
+			});
+
+
 			// ----Begin Code Flower----//			    		
 			var TimeFlower = function(selector, w, h) {
 			  this.w = w;
 			  this.h = h;
 
-			  d3.select(selector).selectAll('.movesvg').remove();
+			  d3.select(selector).selectAll('.dynasvg').remove();
 
 			  this.svg = d3.select(selector).append("svg:svg")
-			  	.attr('class','movesvg')
+			  	.attr('class','dynasvg')
 			    .attr('width', w)
 			    .attr('height', h);
 

@@ -160,3 +160,16 @@ text {
   pointer-events: none;
 }
 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: blue;
+  shape-rendering: crispEdges;
+}
+
+.xx.axis path {
+  stroke: blue;
+}
+
+
+
