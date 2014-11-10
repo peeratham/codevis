@@ -2,7 +2,7 @@
 
 # Use this one-liner to produce a JSON literal from the Git log:
 
-cd ./app/data/mhroot
+cd ./app/data/root
 
 
 #git log -n1 --format="Last committed item in this release was by %an, `git log -n1 --format=%ad# | awk '{print strftime("%y%m%d%H%M",$1)}'`, message: %s (%h) [%d]"

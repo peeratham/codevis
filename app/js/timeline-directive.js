@@ -8,7 +8,7 @@ codevisComponents.directive('timelineChart',['ProjectEvolutionData',
 
 
 			ProjectEvolutionData.query(function(data) {
-
+var parseDate = d3.time.format("%Y-%m-%d").parse;
 var len = data.length;
 var Alljson=[];
 var addData = [];
@@ -45,47 +45,49 @@ for(var j=0;j<len;j++){
 	}
 
 	var time=data[j].date;
-	if(j===0){
-		if(data[j].action === 'delete') delNum=1;
-		else addNum=1;
-	}
-	else if(j>0 && time === data[j-1].date){
-		if(data[j].action === 'create' || data[j].action === 'erase'){
-			addNum++;
-		}else{
-			delNum++;
+	if(j===len-1){
+		if(time === data[j-1].date){
+			if (data[j].action === 'delete') delNum++;
+			else addNum++;
+			addData.push([parseDate(time),addNum]);
+			delData.push([parseDate(time),delNum]);
+		}
+		else{
+			if (data[j].action === 'delete') delData.push([parseDate(time),1]);	
+			else addData.push([parseDate(time),1]);
 		}
 	}
-	else if (data[j].action === 'delete'){
-		
-		delData.push([time,delNum]);
-		delNum=1;	
-	}	
-	else{
-		addData.push([time,addNum]);
-		addNum=1;
+	else if(j<len-1 && time === data[j+1].date){
+		if(data[j].action === 'delete') delNum++;
+		else addNum++;
+	}
+	else if(j<len-1 && time !== data[j+1].date){
+		if (data[j].action === 'delete') delNum++;
+		else addNum++;
+
+		addData.push([parseDate(time),addNum]);
+		delData.push([parseDate(time),delNum]);
+		addNum=0;
+		delNum=0;
 	}
 
 }
-var parseDate = d3.time.format("%Y-%m-%d").parse;
-addData.shift();
-
-console.log(addData[0]);
 
 var xx = d3.time.scale()
-    .range([0, 500]);
+    .range([0, 800]);
 
 var yy = d3.scale.linear()
-    .range([400, 0]);
+    .range([300, 0]);
 
 
-xx.domain(d3.extent(addData, function(d){return parseDate(d[0]);}));
+xx.domain(d3.extent(addData, function(d){return d[0];}));
 yy.domain(d3.extent(addData, function(d){return d[1];}));
 
 var xxAxis = d3.svg.axis()
     .scale(xx)
-    .tickFormat(function(d) { console.log(d);return d; })
-    .ticks(4)
+    //.tickFormat(function(d) { console.log(d);return d; })
+    //.tickValues(parseDate([addData[0],addData[5]]))
+    //.ticks(5)
     .orient("bottom");
 
 var yyAxis = d3.svg.axis()
@@ -96,36 +98,82 @@ var chartsvg = d3.select(element[0]).append('svg')
 		.style("stroke", "#999")
 		.style("fill", "#fff")
 		.attr('class','chartsvg')
-		.attr('width', 600)
-		.attr('height', 500)
+		.attr('width', 900)
+		.attr('height', 400)
 		.append('g')
 		.attr("transform", "translate(" + 50 + "," + 50 + ")");
 
 var chartFunction = d3.svg.line()
-                  .x(function(d) { return xx(parseDate(d[0])); })
+                  .x(function(d) { return xx(d[0]); })
                   .y(function(d) { return yy(d[1]); })
-                  .interpolate("basis");
+                  .interpolate("linear");
                                  
-var chart = chartsvg.append("path")
-               .attr("d", chartFunction(addData))
-               .attr("stroke", "blue")
-               .attr("stroke-width", 2)
-               .attr("fill", "none");
+var Add = chartsvg.append("path")
+        .attr("d", chartFunction(addData))
+        .attr("stroke", "blue")
+        .attr("stroke-width", 2)
+        .attr("fill", "none");
+
+var addpoint = chartsvg.append("g")
+		.attr("class", "add-point");
+
+addpoint.selectAll('.addcir')
+		.data(addData)
+		.enter().append('circle')
+		.attr("cx", function(d) { return xx(d[0]) })
+		.attr("cy", function(d) { return yy(d[1]) })
+		.attr("r", 3)
+		.attr('class','addcir')
+		.style("fill", "white")
+		.style("stroke", "blue");
+
+
+
+
+var Del = chartsvg.append("path")
+        .attr("d", chartFunction(delData))
+        .attr("stroke", "red")
+        .attr("stroke-width", 2)
+        .attr("fill", "none");
+
+var delpoint = chartsvg.append("g")
+		.attr("class", "del-point");
+
+delpoint.selectAll('.celcir')
+		.data(delData)
+		.enter().append('circle')
+		.attr("cx", function(d) { return xx(d[0]) })
+		.attr("cy", function(d) { return yy(d[1]) })
+		.attr("r", 3)
+		.attr('class','delcir')
+		.style("fill", "white")
+		.style("stroke", "red");
+
 
 chartsvg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate("+100+"," + 500 + ")")
-      .call(xxAxis);
+      .attr("transform", "translate(0"+"," + 300 + ")")
+      .call(xxAxis)
+      .selectAll("text")
+    //.attr("y", 60)
+    //.attr("x", 30)
+    	.attr('stroke-width', 1)
+    	.attr('stroke', 'black')
+      	.attr('fill', 'black');
+   		//.style("text-anchor", "start");
 
 chartsvg.append("g")
       .attr("class", "y axis")
       .call(yyAxis)
+      .attr('fill', 'black' )
+      .attr('stroke','black')
     .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 10)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Commit");
+      .attr("x", 0)
+      .attr("y", -10)
+      .attr('stroke', 'black')
+      .attr('fill', 'black')
+      .attr("dy", ".0em")
+      .text("ADD/DELETE");
 
   // chartsvg.append("path")
   //     .datum(data)
@@ -199,8 +247,8 @@ handle = slider.append("circle")
     .attr("transform", "translate(0," + brushHeight/2 + ")")
     .attr("r", 0);
 
-d3.select(window)
-      .on("keydown", keydowned);
+// d3.select(window)
+//       .on("keydown", keydowned);
 
 var playButton = d3.select("#g-play-button");
 
@@ -231,18 +279,20 @@ function paused() {
   }
 }
 
-function keydowned() {
-  if (d3.event.metaKey || d3.event.altKey) return;
-  switch (d3.event.keyCode) {
-    case 37: targetValue = Math.max(x.domain()[0], currentValue - trailLength); break;
-    case 39: targetValue = Math.min(x.domain()[1], currentValue + trailLength); break;
-    default: return;
-  }
-  playButton.text("Play");
-  slider.interrupt();
-  move();
-  d3.event.preventDefault();
-}
+// function keydowned() {
+//   if (d3.event.metaKey || d3.event.altKey) return;
+//   console.log("switch");
+//   switch (d3.event.keyCode) {
+//     case 37: targetValue = Math.max(x.domain()[0], currentValue); break;
+//     case 39: targetValue = Math.min(x.domain()[1], currentValue); break;
+//     default: return;
+//   }
+//   console.log("play");
+//   playButton.text("Play");
+//   slider.interrupt();
+//   move();
+//   d3.event.preventDefault();
+// }
 
 var stoptime=0;
 var j=0;
@@ -447,33 +497,28 @@ function getChildren(json) {
 			};
 
 			TimeFlower.prototype.flatten = function(root) {
-			  var nodes = [], i = 0;
-			  var path ='';
-			  function recurse(node) {
-			  	
-			    if (node.children) {
-			    	//generate node.path that has children
-			    	node.path = path+'/'+node.name;
-			  		path = path+'/'+node.name;
-
-			      node.size = node.children.reduce(function(p, v) {			      	
-			        return p + recurse(v);
-			      }, 0);
-			    }
-			    else{
-			    	//generat node.path with no children
-			    	node.path = path+'/'+node.name;
-			    }
-			    if (!node.id) node.id = ++i;
-			    nodes.push(node);
-			    //console.log(node);
-			    return node.size;
-			  }
-
-			  root.size = recurse(root);
-
-			  return nodes;
-			  // console.log(nodes);
+ 				var nodes = [], i = 0;
+ 		 		// var path ='';
+ 		 		function recurse(node,path) {
+ 		 		  
+ 		 		  if (node.children) {
+ 		 		    //generate node.path that has children
+ 		 		    node.path = path+'/'+node.name;
+ 		 		    // path = path+'/'+node.name;
+ 		 		    node.size = node.children.reduce(function(p, v) {             
+ 		 		      return p + recurse(v,node.path);
+ 		 		    }, 0);
+ 		 		  }
+ 		 		  else{
+ 		 		    //generat node.path with no children
+ 		 		    node.path = path+'/'+node.name;
+ 		 		  }
+ 		 		  nodes.push(node);
+ 		 		  return node.size;
+ 		 		}
+ 		 		root.size = recurse(root,'');
+ 		 		return nodes;
+ 		 		// console.log(nodes);
 			};
 
 			TimeFlower.prototype.click = function(d) {

@@ -158,13 +158,12 @@ svg {
 .axis path,
 .axis line {
   fill: none;
-  stroke: blue;
-  shape-rendering: crispEdges;
+  stroke: #000;
+  //shape-rendering: crispEdges;
 }
 
-.xx.axis path {
-  stroke: blue;
+.x.axis path {
+  display: none;
 }
-
 
 

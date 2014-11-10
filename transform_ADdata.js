@@ -12,7 +12,7 @@ var reg = / /;
 var result = [];
 var element;
 
-lineReader.eachLine('./app/data/mhroot/ADlog.txt',function(line, last){
+lineReader.eachLine('./app/data/root/ADlog.txt',function(line, last){
 
 	if(DATE.test(line)){
 		date = line.split(reg);	//date[1]
