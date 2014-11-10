@@ -26,7 +26,7 @@ function Tree(element){
   var i = 0;
   var focus=false;
   var nodes = [], links = [];
-  var diameter = 600;
+  var diameter = 650;
   var duration = 1000;
   var width = diameter, height = diameter;
   var tree =  d3.layout.tree()
@@ -79,13 +79,38 @@ that.selectNode = function(path){
   return selectNodeByPath(path);
 }
 
+that.simplifyTree = function(num){
+  console.log('simplify');
+  _simplifyStructure(num);
+}
+
+function _simplifyStructure(num){
+   var nodes = tree.nodes(root);
+   nodes.forEach(function(d) { 
+      if(d.children){
+        if(d.children.length > num){
+          collapse(d);
+        }
+        // console.log(d.children.length);
+      }
+   });
+    // svg.selectAll("g.node").forEach(function(d,i) {
+    //   if(i==0)
+    //     console.log(d);
+    // if(d.children.length > num){
+    //   console.log(d.children.length);
+    //   collapse(d);
+    // }
+  // });
+}
+
 function _update(source) {
   // Compute the new tree layout.
   var nodes = tree.nodes(root),
   links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 80; });
+  nodes.forEach(function(d) { d.y = d.depth * 50; });
 
   // Update the nodes…
   var node = svg.selectAll("g.node")
@@ -117,7 +142,7 @@ function _update(source) {
     return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
   nodeUpdate.select("circle")
-  .attr("r", function(d){ return d.size*10/root.size > 4 ? d.size*10/root.size : 3;})
+  .attr("r", function(d){ return d.size*10/root.size > 7 ? d.size*10/root.size : 5;})
   .style("fill", function(d) { 
     return d._children ? "lightsteelblue" : "#fff"; });
 
@@ -282,6 +307,18 @@ function mouseout(d){
     .style('fill', colors.nodes.normal);
 }
 
+function collapse(d){
+   if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+
+  _update(d);
+}
+
 function rightclick(d){
   d3.event.preventDefault();
    if (d.children) {
@@ -342,6 +379,9 @@ function flatten(root) {
 }
 
 function contains(nodeName, parentNode){ //check if parentNode is a directory before use this
+ if(!parentNode){
+  return -1;
+ }
  for (i = 0; i < parentNode.children.length; i++) { 
   if(parentNode.children[i].name==nodeName){
     return i;

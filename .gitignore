@@ -7,3 +7,5 @@ tmp
 .idea
 *.log
 mhroot/
+root/
+node_app/
