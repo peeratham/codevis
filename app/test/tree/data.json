@@ -1,0 +1,25 @@
+{
+ "name": "root",
+ "children": [
+  {
+   "name": "libs",
+   "children": [
+    {
+     "name": "d3lib",
+     "children": [
+      {"name": "layout.js", "size": 3938},
+      {"name": "force.js", "size": 3812},
+      {"name": "axis.js", "size": 743}
+     ]
+    },
+    {
+     "name": "angularjs",
+     "children": [
+      {"name": "modules.js", "size": 3534},
+      {"name": "directives.js", "size": 5731}
+     ]
+    }
+   ]
+  }
+ ]
+}

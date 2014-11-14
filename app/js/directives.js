@@ -14,7 +14,7 @@ codevisComponents.directive('nodelinkChart',['ProjectTree','Metadata',
 				var tree = Tree(element[0]);		//in js/treelayout.js
 				tree.data(data);
 				tree.render();
-				tree.simplifyTree(10);
+				// tree.simplifyTree(10);
 				tree.update();
 
 				tree.addClickListener(function(info){
@@ -31,9 +31,11 @@ codevisComponents.directive('nodelinkChart',['ProjectTree','Metadata',
 					}});
 
 				tree.addMouseoverListener(function(d){
-					console.log(d.path);
+					scope.currentMetadata = metadata[d.path.trim()];
+					scope.$apply();
+					// console.log(d.path);
 
-					console.log(metadata[d.path.trim()]);
+					// console.log(metadata[d.path.trim()]);
 				});
 				// tree.addNode('root/libs/modules');
 				// tree.deleteNode('root/libs/d3lib/axis.js');

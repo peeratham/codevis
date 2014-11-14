@@ -26,7 +26,7 @@ function Tree(element){
   var i = 0;
   var focus=false;
   var nodes = [], links = [];
-  var diameter = 650;
+  var diameter = 950;
   var duration = 1000;
   var width = diameter, height = diameter;
   var tree =  d3.layout.tree()

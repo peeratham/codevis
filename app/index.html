@@ -35,13 +35,13 @@
     <!-- mode row -->
     <div class="row" align="center">  
       <p>Project Explorer</p>
-      <form name="mode">
+<!--       <form name="mode">
         <input type="radio" value="structure"> Structure
         <input type="radio" value="dependency"> Dependency
       </form>
-    </div>
-    <span><b>Currently Selected:</b></span>
-    <span ng-bind-template="{{focusPath}}"></span>
+ -->    </div>
+    <span><b>Currently Selected:</b></span><span ng-bind-template="{{focusPath}}"></span></br>
+    <span><b>Lines:</b></span><span ng-bind-template="{{currentMetadata.physical_sloc}}"></span></br>
     <!-- diagram & detail view row-->
     <div class="row">
       <!-- diagram -->
@@ -53,6 +53,9 @@
           <button>Search</button>
         </div>
     </div>
+    <!-- <div>
+      <span><b>Functions:</b></span><span ng-repeat="f in currentMetadata.functions" ng-bind-template="| {{f.name}} |"></span>
+    </div> -->
 
      <div ng-controller="aceCtrl" class="col-xs-6 col-xs-offset-3 col-sm-6 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1 col-xl-4">
      </br>

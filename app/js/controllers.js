@@ -10,7 +10,7 @@ codevisControllers.controller('mainCtrl',['$scope','$window','ProjectTree',
 		$scope.projectTree = ProjectTree.query();
 		$scope.focus = '';
 		$scope.focusPath = '';
-		
+		$scope.currentMetadata = '';
 
 	}]);
 
