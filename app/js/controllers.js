@@ -11,6 +11,7 @@ codevisControllers.controller('mainCtrl',['$scope','$window','ProjectTree',
 		$scope.focus = '';
 		$scope.focusPath = '';
 		$scope.currentMetadata = '';
+		$scope.state = {};
 
 	}]);
 
@@ -22,46 +23,65 @@ codevisControllers.controller('aceCtrl', [ '$scope','$http',
 	$scope.fileContent = '';
 	$scope.defaultDataPath = 'data';
 
+	// $scope.$watch('state',function(){
+	// 	console.log($scope.state.hover);
+	// });
 
 	$scope.aceOption= {
 		// mode: '',
+		require: ['ace/ext/language_tools'],
 		useWrapMode: true,
+		advanced:{
+
+		},
+
 		onLoad: function(_ace) {
 
 			var _renderer = _ace.renderer;
 			var Range = ace.require('ace/range').Range;
-
+			// var Folding = ace.require('ace/edit_session/folding').Folding;
+			_ace.session.setMode("ace/mode/" + 'javascript')
 			_ace.setReadOnly(true);
-
+			_ace.session.setFoldStyle('markbeginend');
 			// _ace.setTheme("ace/theme/vibrant_ink");
-			$scope.$watch('focusPath',function(){
-				if($scope.focusLanguage){
-					$http.get($scope.defaultDataPath+$scope.focusPath).success(function(data) {
-					$scope.fileContent = data;
-					_ace.insert(data);
-					_ace.gotoLine(0);
-					});
-				}else{
-					_ace.setValue('');	
-				}
-				
-				
+			$scope.$watch('state',function(){
+					// var target_path = $scope.defaultDataPath+$scope.state.hover;
+					if($scope.state.hover !=""){
+						var target_path = $scope.defaultDataPath+$scope.state.hover;
+						console.log($scope.defaultDataPath+$scope.state.hover);
+
+							$http.get(target_path).success(function(data){
+								if(typeof data =='object'){
+									data = JSON.stringify(data, undefined, 4);
+								}
+								_ace.setValue('');
+								_ace.insert(data);
+								
+								_ace.session.foldAll(1,999,1);
+								var folds = _ace.session.getAllFolds();
+								_ace.session.expandFolds(folds);
+								folds = _ace.session.getAllFolds();
+								_ace.session.expandFolds(folds);
+								_ace.gotoLine(0);
+
+							});	
+					}
+					if($scope.state.focusNode==""){
+						_ace.setValue('');	
+					}
+
 
 			});
 
-		
-	
-			$scope.retrieveContent = function(path){
-				$http.get(path).success(function(data) {
-					$scope.fileContent = data;
-					_ace.insert(data);
-					_ace.gotoLine(0);
-				});
-			}
-			// scope.retrieveContent('data'+info.focus.path);
-			
+			// $scope.retrieveContent = function(path){
+			// 	$http.get(path).success(function(data) {
+			// 		$scope.fileContent = data;
+			// 		_ace.insert(data);
+			// 		_ace.gotoLine(0);
+			// 	});
+			// }
+			// $scope.retrieveContent($scope.url);
 			// _ace.session.addMarker(new Range(0, 0, 1, 0), "hightlight", "line");
-
 
 			$scope.findKeyword = function(keywordVal) {
 				_ace.findAll(keywordVal);

@@ -1,0 +1,1595 @@
+{
+    "/root/assets/js/meta.js": {
+        "path": "root/assets/js/meta.js",
+        "physical_sloc": 32,
+        "logical_sloc": 28,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 45,
+            "total": 74,
+            "identifiers": [
+                "<anonymous>",
+                "meta",
+                "projectId",
+                "\"5368fa5436bf5a5623000000\"",
+                "writeKey",
+                "\"725f3a571824d9c29f6e4d1c39af349a114d9034f8e493f95d39802529e2ccbb174033077bdcf10b541dbb50c20105922c59bbe1fe7741cb4b632dd0bc84fe98c0b591e17da3d429ef867cc674be0ad20ad768a5210662d2d18ff5492f37a1f91ce697a5489064bb3fa95c827b6cb394\"",
+                "Keen",
+                "\"visits\"",
+                "page",
+                "title",
+                "document",
+                "host",
+                "location",
+                "href",
+                "path",
+                "pathname",
+                "protocol",
+                {},
+                "\"\"",
+                "replace",
+                "query",
+                "search",
+                "visitor",
+                "referrer",
+                "ip_address",
+                "\"${keen.ip}\"",
+                "user_agent",
+                "\"${keen.user_agent}\"",
+                "keen",
+                "timestamp",
+                "Date",
+                "toISOString",
+                "addons",
+                "name",
+                "\"keen:ip_to_geo\"",
+                "input",
+                "ip",
+                "\"visitor.ip_address\"",
+                "output",
+                "\"visitor.geo\"",
+                "\"keen:ua_parser\"",
+                "ua_string",
+                "\"visitor.user_agent\"",
+                "\"visitor.tech\"",
+                "addEvent"
+            ]
+        },
+        "functions": [
+            {
+                "name": "Plugin",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 12
+                },
+                "line": 72
+            }
+        ]
+    },
+    "/root/examples/tessel/dashboard.js": {
+        "path": "root/examples/tessel/dashboard.js",
+        "physical_sloc": 163,
+        "logical_sloc": 90,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 80,
+            "total": 268,
+            "identifiers": [
+                "client",
+                "<anonymous>",
+                "projectId",
+                "\"542b084ce8759666375da5e5\"",
+                "readKey",
+                "\"f7069f777acb01ea3883696c1cbaca038f37a5615edbaf1535b1a5d28563afafa1d1c85a0807650dc8c2a971f4f28d5b54139277c41c31d700715ff92cb6caad00af478d2426286620d82af20ea055a2673678b571858fcb03f3f836d95995255f48968266508dc1963bfd4c484698fa\"",
+                "Keen",
+                "light_timeline",
+                "\"count_unique\"",
+                "eventCollection",
+                "\"climate\"",
+                "targetProperty",
+                "\"light-trigger\"",
+                "interval",
+                "\"hourly\"",
+                "timeframe",
+                "start",
+                "\"2014-10-06T07:00:00.000\"",
+                "end",
+                "\"2014-10-06T19:00:00.000\"",
+                "Query",
+                "\"chart-05\"",
+                "document",
+                "getElementById",
+                "chartType",
+                "\"linechart\"",
+                "title",
+                "\" \"",
+                "height",
+                250,
+                "width",
+                "\"auto\"",
+                "draw",
+                "sound_timeline",
+                "\"sound-trigger\"",
+                "\"chart-06\"",
+                "temperature",
+                "\"average\"",
+                "\"temp\"",
+                "\"2014-10-06T00:00:00.000\"",
+                "\"2014-10-07T00:00:00.000\"",
+                "\"angleArc\"",
+                "\"angleOffset\"",
+                125,
+                "\"readOnly\"",
+                true,
+                "\"min\"",
+                0,
+                "\"max\"",
+                120,
+                "\"fgColor\"",
+                "Visualization",
+                "defaults",
+                "colors",
+                1,
+                "\"#chart-01\"",
+                "$",
+                "knob",
+                "res",
+                "\"change\"",
+                "result",
+                "val",
+                "trigger",
+                "run",
+                "humidity",
+                "\"humidity\"",
+                50,
+                "\"#chart-02\"",
+                "light",
+                "\"light\"",
+                "\"step\"",
+                0.01,
+                2,
+                "\"#chart-03\"",
+                100,
+                "sound",
+                "\"sound\"",
+                3,
+                "\"#chart-04\"",
+                "ready"
+            ]
+        },
+        "functions": []
+    },
+    "/root/examples/tessel/tessel-data.js": {
+        "path": "root/examples/tessel/tessel-data.js",
+        "physical_sloc": 141,
+        "logical_sloc": 72,
+        "dependency_count": 5,
+        "dependencies": [
+            {
+                "path": "keen.io",
+                "line": 2
+            },
+            {
+                "path": "wifi-cc3000",
+                "line": 3
+            },
+            {
+                "path": "tessel",
+                "line": 13
+            },
+            {
+                "path": "climate-si7020",
+                "line": 15
+            },
+            {
+                "path": "ambient-attx4",
+                "line": 16
+            }
+        ],
+        "operands": {
+            "distinct": 94,
+            "total": 244,
+            "identifiers": [
+                "Keen",
+                "\"keen.io\"",
+                "require",
+                "wifi",
+                "\"wifi-cc3000\"",
+                "keen",
+                "<anonymous>",
+                "projectId",
+                "\"542b084ce8759666375da5e5\"",
+                "writeKey",
+                "\"5eb5ca575ff8bb7108c21fe13a6cd0e81c1e82b8df8d0fdf7d583029a0702cf892dc5a8b8e9b3884c0415d8a3603ce06465b4b7053aee014a8ab25e640af5b8750ea316034afbdc01899177aa55795829a146bc050e609dfd761324cbd6a8a5ef805b2cc14073fbd3dfd7a2bee2727e2\"",
+                "readKey",
+                "\"f7069f777acb01ea3883696c1cbaca038f37a5615edbaf1535b1a5d28563afafa1d1c85a0807650dc8c2a971f4f28d5b54139277c41c31d700715ff92cb6caad00af478d2426286620d82af20ea055a2673678b571858fcb03f3f836d95995255f48968266508dc1963bfd4c484698fa\"",
+                "configure",
+                "tessel",
+                "\"tessel\"",
+                "climatelib",
+                "\"climate-si7020\"",
+                "ambientlib",
+                "\"ambient-attx4\"",
+                "climate",
+                "port",
+                "\"A\"",
+                "use",
+                "ambient",
+                "\"B\"",
+                "\"ready\"",
+                "\"Connected to si7020\"",
+                "console",
+                "log",
+                "\"f\"",
+                "err",
+                "temp",
+                "humid",
+                "light",
+                "sound",
+                "\"Degrees:\"",
+                4,
+                "toFixed",
+                "\"F\"",
+                "\"Humidity:\"",
+                "\"%RH\"",
+                "\"Light level:\"",
+                8,
+                "\" \"",
+                "\"Sound Level:\"",
+                "isConnected",
+                "loop",
+                10000,
+                "setTimeout",
+                "sendToCloud",
+                "\"nope not connected\"",
+                "getSoundLevel",
+                "getLightLevel",
+                "readHumidity",
+                "readTemperature",
+                500,
+                "setInterval",
+                0.5,
+                "setLightTrigger",
+                "\"light-trigger\"",
+                "data",
+                "\"Our light trigger was hit:\"",
+                "sendLightTrigger",
+                "clearLightTrigger",
+                1500,
+                "on",
+                0.1,
+                "setSoundTrigger",
+                "\"sound-trigger\"",
+                "\"Something happened with sound: \"",
+                "sendSoundTrigger",
+                "clearSoundTrigger",
+                "\"error\"",
+                "\"error connecting module\"",
+                "tdata",
+                "hdata",
+                "ldata",
+                "sdata",
+                "cb",
+                "\"climate\"",
+                "\"temp\"",
+                "\"humidity\"",
+                "\"light\"",
+                "\"sound\"",
+                "\"added event\"",
+                "addEvent",
+                "\"disconnect\"",
+                "\"disconnected, trying to reconnect\"",
+                "ssid",
+                "\"technicallyWifi\"",
+                "password",
+                "\"scriptstick\"",
+                "connect"
+            ]
+        },
+        "functions": [
+            {
+                "name": "sendToCloud",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 11
+                },
+                "line": 108
+            },
+            {
+                "name": "sendLightTrigger",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 7
+                },
+                "line": 120
+            },
+            {
+                "name": "sendSoundTrigger",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 7
+                },
+                "line": 128
+            }
+        ]
+    },
+    "/root/assets/lib/bootstrap/Gruntfile.js": {
+        "path": "root/assets/lib/bootstrap/Gruntfile.js",
+        "physical_sloc": 473,
+        "logical_sloc": 261,
+        "dependency_count": 8,
+        "dependencies": [
+            {
+                "path": "fs",
+                "line": 18
+            },
+            {
+                "path": "path",
+                "line": 19
+            },
+            {
+                "path": "npm-shrinkwrap",
+                "line": 20
+            },
+            {
+                "path": "./grunt/bs-glyphicons-data-generator.js",
+                "line": 21
+            },
+            {
+                "path": "./grunt/bs-lessdoc-parser.js",
+                "line": 22
+            },
+            {
+                "path": "./grunt/bs-raw-files-generator.js",
+                "line": 23
+            },
+            {
+                "path": "load-grunt-tasks",
+                "line": 398
+            },
+            {
+                "path": "time-grunt",
+                "line": 399
+            }
+        ],
+        "operands": {
+            "distinct": 328,
+            "total": 721,
+            "identifiers": [
+                "module",
+                "exports",
+                "<anonymous>",
+                "grunt",
+                "\"use strict\"",
+                "util",
+                "linefeed",
+                "\"\n\"",
+                "RegExp",
+                "quote",
+                "string",
+                {},
+                "\"\\$&\"",
+                "replace",
+                "fs",
+                "\"fs\"",
+                "require",
+                "path",
+                "\"path\"",
+                "npmShrinkwrap",
+                "\"npm-shrinkwrap\"",
+                "generateGlyphiconsData",
+                "\"./grunt/bs-glyphicons-data-generator.js\"",
+                "BsLessdocParser",
+                "\"./grunt/bs-lessdoc-parser.js\"",
+                "generateRawFiles",
+                "\"./grunt/bs-raw-files-generator.js\"",
+                "pkg",
+                "\"package.json\"",
+                "file",
+                "readJSON",
+                "banner",
+                "\"/*!\n\"",
+                "\" * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n\"",
+                "\" * Copyright 2011-<%= grunt.template.today(\"yyyy\") %> <%= pkg.author %>\n\"",
+                "\" * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n\"",
+                "\" */\n\"",
+                "jqueryCheck",
+                "\"if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\\'s JavaScript requires jQuery') }\n\n\"",
+                "clean",
+                "dist",
+                "\"dist\"",
+                "\"docs/dist\"",
+                "jshint",
+                "options",
+                "jshintrc",
+                "\"js/.jshintrc\"",
+                "\"grunt/.jshintrc\"",
+                "src",
+                "\"Gruntfile.js\"",
+                "\"grunt/*.js\"",
+                "\"js/*.js\"",
+                "test",
+                "\"js/tests/unit/.jshintrc\"",
+                "\"js/tests/unit/*.js\"",
+                "assets",
+                "\"docs/assets/js/_src/*.js\"",
+                "\"docs/assets/js/*.js\"",
+                "\"!docs/assets/js/*.min.js\"",
+                "jscs",
+                "config",
+                "\"js/.jscsrc\"",
+                "\"<%= jshint.grunt.src %>\"",
+                "\"<%= jshint.src.src %>\"",
+                "\"<%= jshint.test.src %>\"",
+                "requireCamelCaseOrUpperCaseIdentifiers",
+                null,
+                "\"<%= jshint.assets.src %>\"",
+                "concat",
+                "\"<%= banner %>\n<%= jqueryCheck %>\"",
+                "stripBanners",
+                false,
+                "bootstrap",
+                "\"js/transition.js\"",
+                "\"js/alert.js\"",
+                "\"js/button.js\"",
+                "\"js/carousel.js\"",
+                "\"js/collapse.js\"",
+                "\"js/dropdown.js\"",
+                "\"js/modal.js\"",
+                "\"js/tooltip.js\"",
+                "\"js/popover.js\"",
+                "\"js/scrollspy.js\"",
+                "\"js/tab.js\"",
+                "\"js/affix.js\"",
+                "dest",
+                "\"dist/js/<%= pkg.name %>.js\"",
+                "uglify",
+                "preserveComments",
+                "\"some\"",
+                "\"<%= concat.bootstrap.dest %>\"",
+                "\"dist/js/<%= pkg.name %>.min.js\"",
+                "customize",
+                "\"docs/assets/js/_vendor/less.min.js\"",
+                "\"docs/assets/js/_vendor/jszip.min.js\"",
+                "\"docs/assets/js/_vendor/uglify.min.js\"",
+                "\"docs/assets/js/_vendor/blob.js\"",
+                "\"docs/assets/js/_vendor/filesaver.js\"",
+                "\"docs/assets/js/raw-files.min.js\"",
+                "\"docs/assets/js/_src/customizer.js\"",
+                "\"docs/assets/js/customize.min.js\"",
+                "docsJs",
+                "\"docs/assets/js/_vendor/holder.js\"",
+                "\"docs/assets/js/_vendor/ZeroClipboard.min.js\"",
+                "\"docs/assets/js/_src/application.js\"",
+                "\"docs/assets/js/docs.min.js\"",
+                "qunit",
+                "inject",
+                "\"js/tests/unit/phantom.js\"",
+                "files",
+                "\"js/tests/index.html\"",
+                "less",
+                "compileCore",
+                "strictMath",
+                true,
+                "sourceMap",
+                "outputSourceFiles",
+                "sourceMapURL",
+                "\"<%= pkg.name %>.css.map\"",
+                "sourceMapFilename",
+                "\"dist/css/<%= pkg.name %>.css.map\"",
+                "\"dist/css/<%= pkg.name %>.css\"",
+                "\"less/bootstrap.less\"",
+                "compileTheme",
+                "\"<%= pkg.name %>-theme.css.map\"",
+                "\"dist/css/<%= pkg.name %>-theme.css.map\"",
+                "\"dist/css/<%= pkg.name %>-theme.css\"",
+                "\"less/theme.less\"",
+                "autoprefixer",
+                "browsers",
+                "\"Android 2.3\"",
+                "\"Android >= 4\"",
+                "\"Chrome >= 20\"",
+                "\"Firefox >= 24\"",
+                "\"Explorer >= 8\"",
+                "\"iOS >= 6\"",
+                "\"Opera >= 12\"",
+                "\"Safari >= 6\"",
+                "core",
+                "map",
+                "theme",
+                "docs",
+                "\"docs/assets/css/_src/docs.css\"",
+                "examples",
+                "expand",
+                "cwd",
+                "\"docs/examples/\"",
+                "\"**/*.css\"",
+                "csslint",
+                "csslintrc",
+                "\"less/.csslintrc\"",
+                "\"dist/css/bootstrap.css\"",
+                "\"dist/css/bootstrap-theme.css\"",
+                "\"docs/examples/**/*.css\"",
+                "ids",
+                "\"overqualified-elements\"",
+                "cssmin",
+                "compatibility",
+                "\"ie8\"",
+                "keepSpecialComments",
+                "\"*\"",
+                "noAdvanced",
+                "\"dist/css/<%= pkg.name %>.min.css\"",
+                "\"dist/css/<%= pkg.name %>-theme.min.css\"",
+                "\"docs/assets/css/_src/pygments-manni.css\"",
+                "\"docs/assets/css/docs.min.css\"",
+                "usebanner",
+                "position",
+                "\"top\"",
+                "\"<%= banner %>\"",
+                "\"dist/css/*.css\"",
+                "csscomb",
+                "\"less/.csscomb.json\"",
+                "\"dist/css/\"",
+                "\"*.css\"",
+                "\"!*.min.css\"",
+                "copy",
+                "fonts",
+                "\"fonts/*\"",
+                "\"dist/\"",
+                "\"./dist\"",
+                "\"{css,js}/*.min.*\"",
+                "\"css/*.map\"",
+                "connect",
+                "server",
+                "port",
+                3000,
+                "base",
+                "\".\"",
+                "jekyll",
+                "jade",
+                "compile",
+                "pretty",
+                "data",
+                "filePath",
+                "__dirname",
+                "\"less/variables.less\"",
+                "join",
+                "fileContent",
+                "encoding",
+                "\"utf8\"",
+                "readFileSync",
+                "parser",
+                "sections",
+                "parseFile",
+                "\"docs/_includes/customizer-variables.html\"",
+                "\"docs/_jade/customizer-variables.jade\"",
+                "\"docs/_includes/nav/customize.html\"",
+                "\"docs/_jade/customizer-nav.jade\"",
+                "validation",
+                "charset",
+                "\"utf-8\"",
+                "doctype",
+                "\"HTML5\"",
+                "failHard",
+                "reset",
+                "relaxerror",
+                "\"Bad value X-UA-Compatible for attribute http-equiv on element meta.\"",
+                "\"Element img is missing required attribute src.\"",
+                "\"_gh_pages/**/*.html\"",
+                "watch",
+                "tasks",
+                "\"jshint:src\"",
+                "\"qunit\"",
+                "\"jshint:test\"",
+                "\"less/*.less\"",
+                "\"less\"",
+                "sed",
+                "versionNumber",
+                "pattern",
+                "old",
+                "\"oldver\"",
+                "option",
+                "replacement",
+                "\"newver\"",
+                "recursive",
+                "\"saucelabs-qunit\"",
+                "all",
+                "build",
+                "process",
+                "env",
+                "TRAVIS_JOB_ID",
+                "concurrency",
+                10,
+                "maxRetries",
+                3,
+                "urls",
+                "\"http://127.0.0.1:3000/js/tests/index.html\"",
+                "\"grunt/sauce_browsers.yml\"",
+                "readYAML",
+                "exec",
+                "npmUpdate",
+                "command",
+                "\"npm update\"",
+                "initConfig",
+                "scope",
+                "\"devDependencies\"",
+                "\"load-grunt-tasks\"",
+                "\"time-grunt\"",
+                "\"validate-html\"",
+                "\"jekyll\"",
+                "\"validation\"",
+                "registerTask",
+                "runSubset",
+                "subset",
+                "TWBS_TEST",
+                "isUndefOrNonZero",
+                "val",
+                "undefined",
+                "\"0\"",
+                "testSubtasks",
+                "\"core\"",
+                "\"dist-css\"",
+                "\"csslint\"",
+                "\"jshint\"",
+                "\"jscs\"",
+                "\"build-customizer-html\"",
+                "TWBS_DO_VALIDATOR",
+                "push",
+                "SAUCE_ACCESS_KEY",
+                "\"undefined\"",
+                "\"sauce-js-unit\"",
+                "TWBS_DO_SAUCE",
+                "\"connect\"",
+                "\"test\"",
+                "\"dist-js\"",
+                "\"concat\"",
+                "\"uglify\"",
+                "\"less-compile\"",
+                "\"less:compileCore\"",
+                "\"less:compileTheme\"",
+                "\"autoprefixer\"",
+                "\"usebanner\"",
+                "\"csscomb\"",
+                "\"cssmin\"",
+                "\"dist-docs\"",
+                "\"copy:docs\"",
+                "\"clean\"",
+                "\"copy:fonts\"",
+                "\"default\"",
+                "\"build-glyphicons-data\"",
+                "\"build-customizer\"",
+                "\"change-version-number\"",
+                "\"sed\"",
+                "this",
+                "call",
+                "\"build-raw-files\"",
+                "\"jade\"",
+                "\"Add scripts/less files to customizer.\"",
+                "template",
+                "\"update-shrinkwrap\"",
+                "\"exec:npmUpdate\"",
+                "\"_update-shrinkwrap\"",
+                "done",
+                "async",
+                "dev",
+                "dirname",
+                "err",
+                "fail",
+                "warn",
+                "\"test-infra/npm-shrinkwrap.json\"",
+                "\"npm-shrinkwrap.json\"",
+                "renameSync",
+                "\"File \"",
+                "cyan",
+                "\" updated.\"",
+                "log",
+                "writeln"
+            ]
+        },
+        "functions": [
+            {
+                "name": "module.exports",
+                "sloc": {
+                    "logical": 236,
+                    "physical": 473
+                },
+                "line": 8
+            },
+            {
+                "name": "RegExp.quote",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 14
+            },
+            {
+                "name": "data",
+                "sloc": {
+                    "logical": 6,
+                    "physical": 6
+                },
+                "line": 321
+            },
+            {
+                "name": "runSubset",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 404
+            },
+            {
+                "name": "isUndefOrNonZero",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 407
+            }
+        ]
+    },
+    "/root/assets/lib/bootstrap/js/button.js": {
+        "path": "root/assets/lib/bootstrap/js/button.js",
+        "physical_sloc": 101,
+        "logical_sloc": 65,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 83,
+            "total": 228,
+            "identifiers": [
+                "jQuery",
+                "<anonymous>",
+                "$",
+                "\"use strict\"",
+                "Button",
+                "element",
+                "options",
+                "this",
+                "$element",
+                "DEFAULTS",
+                "extend",
+                "isLoading",
+                false,
+                "VERSION",
+                "\"3.2.0\"",
+                "loadingText",
+                "\"loading...\"",
+                "prototype",
+                "setState",
+                "state",
+                "d",
+                "\"disabled\"",
+                "$el",
+                "val",
+                "\"input\"",
+                "is",
+                "\"val\"",
+                "\"html\"",
+                "data",
+                "\"Text\"",
+                "resetText",
+                null,
+                "\"resetText\"",
+                "\"loadingText\"",
+                true,
+                "addClass",
+                "attr",
+                "removeClass",
+                "removeAttr",
+                "proxy",
+                0,
+                "setTimeout",
+                "toggle",
+                "changed",
+                "$parent",
+                "\"[data-toggle=\"buttons\"]\"",
+                "closest",
+                "length",
+                "$input",
+                "find",
+                "\"type\"",
+                "prop",
+                "\"radio\"",
+                "\"checked\"",
+                "\"active\"",
+                "hasClass",
+                "\".active\"",
+                "\"change\"",
+                "trigger",
+                "toggleClass",
+                "Plugin",
+                "option",
+                "$this",
+                "\"bs.button\"",
+                "\"object\"",
+                "\"toggle\"",
+                "each",
+                "old",
+                "fn",
+                "button",
+                "Constructor",
+                "noConflict",
+                "\"click.bs.button.data-api\"",
+                "\"[data-toggle^=\"button\"]\"",
+                "e",
+                "$btn",
+                "target",
+                "\"btn\"",
+                "\".btn\"",
+                "call",
+                "preventDefault",
+                "document",
+                "on"
+            ]
+        },
+        "functions": [
+            {
+                "name": "Button",
+                "sloc": {
+                    "logical": 3,
+                    "physical": 5
+                },
+                "line": 16
+            },
+            {
+                "name": "<anonymous>.setState",
+                "sloc": {
+                    "logical": 9,
+                    "physical": 23
+                },
+                "line": 28
+            },
+            {
+                "name": "<anonymous>.toggle",
+                "sloc": {
+                    "logical": 13,
+                    "physical": 15
+                },
+                "line": 52
+            },
+            {
+                "name": "Plugin",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 12
+                },
+                "line": 72
+            },
+            {
+                "name": "<anonymous>.noConflict",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 4
+                },
+                "line": 94
+            }
+        ]
+    },
+    "/root/assets/lib/bootstrap/js/tab.js": {
+        "path": "root/assets/lib/bootstrap/js/tab.js",
+        "physical_sloc": 119,
+        "logical_sloc": 60,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 77,
+            "total": 205,
+            "identifiers": [
+                "jQuery",
+                "<anonymous>",
+                "$",
+                "\"use strict\"",
+                "Tab",
+                "element",
+                "this",
+                "VERSION",
+                "\"3.2.0\"",
+                "prototype",
+                "show",
+                "$this",
+                "$ul",
+                "\"ul:not(.dropdown-menu)\"",
+                "closest",
+                "selector",
+                "\"target\"",
+                "data",
+                "\"href\"",
+                "attr",
+                {},
+                "\"\"",
+                "replace",
+                "\"active\"",
+                "\"li\"",
+                "parent",
+                "hasClass",
+                "previous",
+                "\".active:last a\"",
+                "find",
+                0,
+                "e",
+                "\"show.bs.tab\"",
+                "relatedTarget",
+                "Event",
+                "trigger",
+                "isDefaultPrevented",
+                "$target",
+                "activate",
+                "type",
+                "\"shown.bs.tab\"",
+                "container",
+                "callback",
+                "$active",
+                "\"> .active\"",
+                "transition",
+                "support",
+                "\"fade\"",
+                "next",
+                "\"> .dropdown-menu > .active\"",
+                "removeClass",
+                "addClass",
+                "offsetWidth",
+                "\"in\"",
+                "\".dropdown-menu\"",
+                "\"li.dropdown\"",
+                150,
+                "\"bsTransitionEnd\"",
+                "one",
+                "emulateTransitionEnd",
+                "Plugin",
+                "option",
+                "\"bs.tab\"",
+                "\"string\"",
+                "each",
+                "old",
+                "fn",
+                "tab",
+                "Constructor",
+                "noConflict",
+                "\"click.bs.tab.data-api\"",
+                "\"[data-toggle=\"tab\"], [data-toggle=\"pill\"]\"",
+                "preventDefault",
+                "\"show\"",
+                "call",
+                "document",
+                "on"
+            ]
+        },
+        "functions": [
+            {
+                "name": "Tab",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 16
+            },
+            {
+                "name": "<anonymous>.show",
+                "sloc": {
+                    "logical": 17,
+                    "physical": 31
+                },
+                "line": 22
+            },
+            {
+                "name": "<anonymous>.activate",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 36
+                },
+                "line": 54
+            },
+            {
+                "name": "next",
+                "sloc": {
+                    "logical": 10,
+                    "physical": 21
+                },
+                "line": 60
+            },
+            {
+                "name": "Plugin",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 9
+                },
+                "line": 95
+            },
+            {
+                "name": "<anonymous>.noConflict",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 4
+                },
+                "line": 114
+            }
+        ]
+    },
+    "/root/assets/lib/bootstrap/js/transition.js": {
+        "path": "root/assets/lib/bootstrap/js/transition.js",
+        "physical_sloc": 50,
+        "logical_sloc": 36,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 48,
+            "total": 98,
+            "identifiers": [
+                "jQuery",
+                "<anonymous>",
+                "$",
+                "\"use strict\"",
+                "transitionEnd",
+                "el",
+                "\"bootstrap\"",
+                "document",
+                "createElement",
+                "transEndEventNames",
+                "WebkitTransition",
+                "\"webkitTransitionEnd\"",
+                "MozTransition",
+                "\"transitionend\"",
+                "OTransition",
+                "\"oTransitionEnd otransitionend\"",
+                "transition",
+                "name",
+                "style",
+                "undefined",
+                "end",
+                false,
+                "fn",
+                "emulateTransitionEnd",
+                "duration",
+                "called",
+                "$el",
+                "this",
+                "\"bsTransitionEnd\"",
+                true,
+                "one",
+                "callback",
+                "support",
+                "trigger",
+                "setTimeout",
+                "event",
+                "special",
+                "bsTransitionEnd",
+                "bindType",
+                "delegateType",
+                "handle",
+                "e",
+                "target",
+                "is",
+                "arguments",
+                "handleObj",
+                "handler",
+                "apply"
+            ]
+        },
+        "functions": [
+            {
+                "name": "transitionEnd",
+                "sloc": {
+                    "logical": 12,
+                    "physical": 18
+                },
+                "line": 16
+            },
+            {
+                "name": "<anonymous>.emulateTransitionEnd",
+                "sloc": {
+                    "logical": 6,
+                    "physical": 8
+                },
+                "line": 36
+            },
+            {
+                "name": "callback",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 1
+                },
+                "line": 40
+            },
+            {
+                "name": "handle",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 3
+                },
+                "line": 53
+            }
+        ]
+    },
+    "/root/examples/2048/js/game/animframe_polyfill.js": {
+        "path": "root/examples/2048/js/game/animframe_polyfill.js",
+        "physical_sloc": 28,
+        "logical_sloc": 19,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 25,
+            "total": 67,
+            "identifiers": [
+                "<anonymous>",
+                "lastTime",
+                0,
+                "vendors",
+                "\"webkit\"",
+                "\"moz\"",
+                "x",
+                "length",
+                "window",
+                "requestAnimationFrame",
+                "\"RequestAnimationFrame\"",
+                "cancelAnimationFrame",
+                "\"CancelAnimationFrame\"",
+                "\"CancelRequestAnimationFrame\"",
+                "callback",
+                "currTime",
+                "Date",
+                "getTime",
+                "timeToCall",
+                16,
+                "Math",
+                "max",
+                "id",
+                "setTimeout",
+                "clearTimeout"
+            ]
+        },
+        "functions": [
+            {
+                "name": "window.requestAnimationFrame",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 10
+                },
+                "line": 11
+            },
+            {
+                "name": "window.cancelAnimationFrame",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 24
+            }
+        ]
+    },
+    "/root/examples/2048/js/game/application.js": {
+        "path": "root/examples/2048/js/game/application.js",
+        "physical_sloc": 59,
+        "logical_sloc": 38,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 60,
+            "total": 109,
+            "identifiers": [
+                "<anonymous>",
+                "window",
+                "client",
+                "projectId",
+                "\"53e3da37e8617022dd000000\"",
+                "writeKey",
+                "\"1b94c236f839c60775698ea90cef000906eb6f5b6928180320464d3ce61c334775ea0554bb1b5e96cb91bd8e3a2658959a438e85e429702e0e7618be2261a8ac824445301cd3b7e4a59407c0b6876b3c4054bcc63ad7a30fc837513a8516b7b357d3e7931d503a01273209d3db57c301\"",
+                "readKey",
+                "\"de02be24f019e60415325d5e34408a752403cdf5170a686d4d3dbdf24b43ad0abafc61ad2e0a5dd9df3d608af8fd243a212416ac407c59e9279db85a3e3f43fbba6c44bb98e2dd3d28d0f3531e1fae763cd87e5b75132ebb23d36632f81b84480dc14c36517efc75e04e1b521b9aca6e\"",
+                "Keen",
+                "query",
+                "\"count\"",
+                "eventCollection",
+                "\"new_high_score2\"",
+                "groupBy",
+                "\"best_score\"",
+                "Query",
+                "movesQuery",
+                "\"moves\"",
+                "el",
+                "\"stats-container\"",
+                "document",
+                "getElementById",
+                "movesContainer",
+                "\"moves-container\"",
+                "google_options",
+                "bar",
+                "groupWidth",
+                "\"95%\"",
+                "chartArea",
+                "width",
+                "\"90%\"",
+                "hAxis",
+                "title",
+                "\"Percentile\"",
+                "legend",
+                "position",
+                "\"none\"",
+                "moves",
+                "res",
+                "\"Total number of moves\"",
+                400,
+                "chartType",
+                "\"table\"",
+                "chartOptions",
+                "Visualization",
+                "run",
+                "scores",
+                "\"Best Scores\"",
+                "sortColumn",
+                1,
+                "sortAscending",
+                false,
+                "ready",
+                4,
+                "KeyboardInputManager",
+                "HTMLActuator",
+                "LocalStorageManager",
+                "GameManager",
+                "requestAnimationFrame"
+            ]
+        },
+        "functions": []
+    },
+    "/root/examples/2048/js/game/bind_polyfill.js": {
+        "path": "root/examples/2048/js/game/bind_polyfill.js",
+        "physical_sloc": 9,
+        "logical_sloc": 6,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 10,
+            "total": 21,
+            "identifiers": [
+                "Function",
+                "prototype",
+                "bind",
+                "<anonymous>",
+                "target",
+                "self",
+                "this",
+                "args",
+                "Array",
+                "apply"
+            ]
+        },
+        "functions": []
+    },
+    "/root/examples/2048/js/game/classlist_polyfill.js": {
+        "path": "root/examples/2048/js/game/classlist_polyfill.js",
+        "physical_sloc": 71,
+        "logical_sloc": 50,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 47,
+            "total": 149,
+            "identifiers": [
+                "<anonymous>",
+                "window",
+                "Element",
+                "\"undefined\"",
+                "\"classList\"",
+                "document",
+                "documentElement",
+                "prototype",
+                "Array",
+                "push",
+                "splice",
+                "join",
+                "DOMTokenList",
+                "el",
+                "this",
+                "classes",
+                {},
+                {},
+                "\"\"",
+                "className",
+                "replace",
+                "split",
+                "i",
+                0,
+                "length",
+                "call",
+                "add",
+                "token",
+                "contains",
+                "_toString",
+                "indexOf",
+                1,
+                "item",
+                "index",
+                null,
+                "remove",
+                "\" \"",
+                "toggle",
+                "defineElementGetter",
+                "obj",
+                "prop",
+                "getter",
+                "Object",
+                "defineProperty",
+                "get",
+                "___defineGetter__",
+                "HTMLElement"
+            ]
+        },
+        "functions": [
+            {
+                "name": "DOMTokenList",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 9
+                },
+                "line": 12
+            },
+            {
+                "name": "add",
+                "sloc": {
+                    "logical": 4,
+                    "physical": 5
+                },
+                "line": 23
+            },
+            {
+                "name": "contains",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 28
+            },
+            {
+                "name": "item",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 31
+            },
+            {
+                "name": "remove",
+                "sloc": {
+                    "logical": 8,
+                    "physical": 8
+                },
+                "line": 34
+            },
+            {
+                "name": "toString",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 42
+            },
+            {
+                "name": "toggle",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 9
+                },
+                "line": 45
+            },
+            {
+                "name": "defineElementGetter",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 9
+                },
+                "line": 58
+            }
+        ]
+    },
+    "/root/examples/2048/js/game/local_storage_manager.js": {
+        "path": "root/examples/2048/js/game/local_storage_manager.js",
+        "physical_sloc": 63,
+        "logical_sloc": 35,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 43,
+            "total": 130,
+            "identifiers": [
+                "window",
+                "fakeStorage",
+                "<anonymous>",
+                "_data",
+                "setItem",
+                "id",
+                "val",
+                "this",
+                "String",
+                "getItem",
+                "_hasOwnProperty",
+                "undefined",
+                "removeItem",
+                "clear",
+                "LocalStorageManager",
+                "bestScoreKey",
+                "\"bestScore\"",
+                "gameStateKey",
+                "\"gameState\"",
+                "supported",
+                "localStorageSupported",
+                "storage",
+                "localStorage",
+                "prototype",
+                "testKey",
+                "\"test\"",
+                "\"1\"",
+                true,
+                "error",
+                false,
+                "getBestScore",
+                0,
+                "setBestScore",
+                "score",
+                "getGameState",
+                "stateJSON",
+                "JSON",
+                "parse",
+                null,
+                "setGameState",
+                "gameState",
+                "stringify",
+                "clearGameState"
+            ]
+        },
+        "functions": [
+            {
+                "name": "setItem",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 4
+            },
+            {
+                "name": "getItem",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 8
+            },
+            {
+                "name": "removeItem",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 12
+            },
+            {
+                "name": "clear",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 16
+            },
+            {
+                "name": "LocalStorageManager",
+                "sloc": {
+                    "logical": 4,
+                    "physical": 7
+                },
+                "line": 21
+            },
+            {
+                "name": "<anonymous>.localStorageSupported",
+                "sloc": {
+                    "logical": 8,
+                    "physical": 12
+                },
+                "line": 29
+            },
+            {
+                "name": "<anonymous>.getBestScore",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 43
+            },
+            {
+                "name": "<anonymous>.setBestScore",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 47
+            },
+            {
+                "name": "<anonymous>.getGameState",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 4
+                },
+                "line": 52
+            },
+            {
+                "name": "<anonymous>.setGameState",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 57
+            },
+            {
+                "name": "<anonymous>.clearGameState",
+                "sloc": {
+                    "logical": 1,
+                    "physical": 3
+                },
+                "line": 61
+            }
+        ]
+    },
+    "/root/examples/2048/js/game/tile.js": {
+        "path": "root/examples/2048/js/game/tile.js",
+        "physical_sloc": 27,
+        "logical_sloc": 19,
+        "dependency_count": 0,
+        "dependencies": [],
+        "operands": {
+            "distinct": 15,
+            "total": 63,
+            "identifiers": [
+                "Tile",
+                "position",
+                "value",
+                "this",
+                "x",
+                "y",
+                2,
+                "previousPosition",
+                null,
+                "mergedFrom",
+                "prototype",
+                "savePosition",
+                "<anonymous>",
+                "updatePosition",
+                "serialize"
+            ]
+        },
+        "functions": [
+            {
+                "name": "Tile",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 8
+                },
+                "line": 1
+            },
+            {
+                "name": "<anonymous>.savePosition",
+                "sloc": {
+                    "logical": 3,
+                    "physical": 3
+                },
+                "line": 10
+            },
+            {
+                "name": "<anonymous>.updatePosition",
+                "sloc": {
+                    "logical": 2,
+                    "physical": 4
+                },
+                "line": 14
+            },
+            {
+                "name": "<anonymous>.serialize",
+                "sloc": {
+                    "logical": 5,
+                    "physical": 9
+                },
+                "line": 19
+            }
+        ]
+    }
+}

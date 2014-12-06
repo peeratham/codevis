@@ -19,12 +19,12 @@ lineReader.eachLine('./app/data/root/ADlog.txt',function(line, last){
 	}
 	else if(CREATE.test(line)){
 		add = line.split(reg);	//add[3]
-		element = {date: date[1], action: 'create', path: '/'+add[4]};
+		element = {date: date[1], action: 'create', path: '/root/'+add[4]};
 		result.unshift(element);
 	}
 	else if(DELETE.test(line)){
 		del = line.split(reg);
-		element = {date: date[1], action: 'delete', path: '/'+del[4]};
+		element = {date: date[1], action: 'delete', path: '/root/'+del[4]};
 		result.unshift(element);
 	}	
 	if(last){

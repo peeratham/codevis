@@ -1,96 +1,3 @@
-// var div,diagram;
-//     //data so name doesn't have to be root anymore you can assign any name as root
-//     //you can use real data by uncomment d3.json 
-//     // data={name:'root', children:[{name:'child1'}]};
-//     // data={name:'root', children:[{name:'child1'}, {name:'child2'}, {name:'child3'}]};
-//     // data={name:'root', children:[{name:'child1'}, {name:'child2', children:[{name:'child3'}, {name:'child4'},{name:'child5'}]},{name:'child6'},{name:'child'}]};
-//       data={
-//           "name": "D3",
-//           "path": "/D3",
-//           "children": [
-//             {
-//               "name": "lib",
-//               "path": "/D3/lib",
-//               "children": [
-//                 {
-//                   "name": "modules",
-//                   "path": "/D3/lib/modules",
-//                   "children": [
-//                     {
-//                       "name": "force.js",
-//                       "path": "/D3/lib/modules/force.js"
-//                     }
-//                   ]
-//                 },
-//                 {
-//                   "name": "angular.js",
-//                   "path": "/D3/lib/angular.js"
-//                 }
-//               ]
-//             },
-//             {
-//               "name": "lib2",
-//               "path": "/D3/lib2",
-//               "children": [
-//                 {
-//                   "name": "modules2",
-//                   "path": "/D3/lib/modules2",
-//                   "children": [
-//                     {
-//                       "name": "force2.js",
-//                       "path": "/D3/lib/modules2/force2.js"
-//                     }
-//                   ]
-//                 },
-//                 {
-//                   "name": "angular2.js",
-//                   "path": "/D3/lib2/angular2.js"
-//                 }
-//               ]
-//             },
-//             {
-//               "name": "lib3",
-//               "path": "/D3/lib3",
-//               "children": [
-//                 {
-//                   "name": "modules3",
-//                   "path": "/D3/lib3/modules3",
-//                   "children": [
-//                     {
-//                       "name": "force3.js",
-//                       "path": "/D3/lib3/modules3/force3.js"
-//                     }
-//                   ]
-//                 }
-//               ]
-//             }
-//           ]
-//       };
-
-// // d3.json("structure.json", function(data) {   //comment/uncomment this line to use real data
-  
-//   div = d3.select('body').append('div');
-
-
-//   diagram = TreeDiagram(div);  
-//   flatten(data);   
-//   diagram.data(data); 
-//   diagram.render(); 
-
-//   setTimeout(function(){
-//     addNode(data, '/D3/lib/modules/tree.js');
-//     diagram.update();
-//   }, 1000); 
-
-//   setTimeout(function(){
-//     removeNode(data, '/D3/lib/angular.js');
-//     diagram.update();
-//   }, 2000);
-
-// // }); 
-
-
-
 function TreeDiagram(p) {
   var firstTime = true;
   var that = {};
@@ -100,8 +7,10 @@ function TreeDiagram(p) {
   var duration = 1000;
   var _treeSize = _diameter/2-80;
 
-  var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name; });
-
+  // var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name; });
+  var zoom = d3.behavior.zoom()
+    .scaleExtent([0.5, 10])
+    .on("zoom", zoomed);
   
   var tree = d3.layout.tree()
     .size([360, _treeSize])
@@ -111,14 +20,22 @@ function TreeDiagram(p) {
   var diagonal = d3.svg.diagonal.radial()
       .projection(function(d) { return [d.y, d.x / 180 * Math.PI];});
 
-      var svg = _parent.append("svg")
+  var svg = _parent.append("svg")
       .attr("width", _diameter)
       .attr("height", _diameter-50);
   var body = svg.append("g")
       .attr("class", 'body')
       .attr("transform", "translate(" + _diameter / 2 + "," + _diameter / 2 + ")");
 
-    body.call(tip);
+    // body.call(tip);
+  svg.call(zoom);
+
+  function zoomed() {
+    body.attr("transform", "translate("  + (d3.event.translate[0]+_diameter / 2)+","+ (d3.event.translate[1]+_diameter / 2)+")scale(" + d3.event.scale + ")");
+  }
+  
+    svg.on("click", resetFocus);
+
 
 
   that.render = function(){
@@ -156,12 +73,13 @@ function TreeDiagram(p) {
                     parent_transform0 =  parent_el.attr('transform');}
                     return parent_transform0;
                 }
-            ).on("click", function(d) { 
-              toggle(d); 
-              _update(d); 
-            })
-             .on('mouseover', tip.show)
-             .on('mouseout', tip.hide)
+            )
+            .on("contextmenu", rightclick)
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout)
+            .on("click", leftclick)
+            // .on('mouseover', tip.show)
+            // .on('mouseout', tip.hide)
             ;
 
       gnodeEnter.append("circle")
@@ -284,155 +202,227 @@ function TreeDiagram(p) {
       _root.y0 = 0;
     return that;
   };
+
+  function selectNodeFromPath(path){  //return dom; if want data .datum()
+    var node = 
+            svg.selectAll("g.node")
+            .filter(function(d){
+              return d.path==path});
+    return node;
+  }
+
+  function selectMultipleNodes(pathList){ //return list of doms
+    var nodes = [];
+    pathList.forEach(
+
+      function(path){
+      nodes.push(selectNodeFromPath(path));
+    });
+    return nodes;
+  }
+
+
+
+  function rightclick(d) {
+    try{ d3.event.preventDefault();} catch(err){};
+    toggle(d); 
+    _update(d); 
+  }
+  
+  var _meta;
+  var _relations;
+  var _identifiers;
+  
+
+  var focusNode = "";
+  var relatedNodes = {};
+  var relatedPaths = [];
+  var unfocusNodes = [];
+  var hover = "";
+
+
+  function mouseover(d) {
+    if(d.path == focusNode){
+      return;
+    }
+     if(_.contains(relatedPaths, d.path)){
+      console.log('already focused');
+      return; //or make put some glow effect
+    }
+    try{
+      d3.select(this).select("circle").style('fill','green','important');
+
+      //if don't change relatedFiles when there's a focus
+      if(focusNode==""){
+      //update relatedFiles
+      relatedNodes = _relations[d.path];
+      relatedPaths = _.keys(relatedNodes);
+      if(relatedPaths.length>0){
+        highlightRelatedFromPath(relatedPaths);
+      }
+    }
+      
+    }catch(error){
+      d.select("circle").style('fill','green','important'); 
+    }
+    hover = d.path;
+    notifyChanges();
+
+  }
+
+  var isNodeClick = false;
+  var lastRelatedPaths = [];
+  function leftclick(d){
+    // console.log('d.path',d.path);
+    // if click on the same node twice -> do nothing
+    isNodeClick = true;
+    if(d.path == focusNode){
+      console.log('twice');
+      isNodeClick = true; //signal svg listener that it's nodese click
+      return;
+    }
+
+    if(_.contains(relatedPaths, d.path)){
+      console.log('already focused');
+      return; //display some useful info about the primary and this secondary one
+    }
+    unhighlightNodesFromPath([focusNode]);
+    
+    //unhighlight last nod
+    focusNode = d.path;
+    console.log('current', focusNode);
+    highlightNodesFromPath([focusNode]);
+    
+    console.log('related:',relatedPaths);
+    unhighlightNodesFromPath(lastRelatedPaths);
+
+    relatedNodes = _relations[d.path];
+    lastRelatedPaths = relatedPaths;  //saved
+    relatedPaths = _.keys(relatedNodes);
+    if(relatedPaths.length>0){
+        highlightRelatedFromPath(relatedPaths);
+    }
+       // console.log('last',lastFocus);
+
+  }
+
+  function resetFocus(){
+
+    setTimeout(function(){
+      // if(focusNode==""){
+      //   return;
+      // }
+      if(focusNode!="" && !isNodeClick){
+        // unhighlightNodesFromPath([focusNode]);
+             unhighlightNodesFromPath([focusNode]); //unhightlight last focus first
+             unhighlightNodesFromPath(relatedPaths);
+             focusNode = "";
+             relatedPaths = [];
+           }
+           isNodeClick = false;
+
+           notifyChanges();  
+      }, 50);
+  }
+
+  function highlightNodesFromPath(paths){   //refactor later to use class #active and d3.selectAll(#active) to unhighlight
+      var nodes = selectMultipleNodes(paths);
+      nodes.forEach(function(node){
+        node.select("circle").style('fill','yellow','important'); 
+      });
+  }
+
+  function highlightRelatedFromPath(paths){   //refactor later to use class #active and d3.selectAll(#active) to unhighlight
+      var nodes = selectMultipleNodes(paths);
+      nodes.forEach(function(node){
+        node.select("circle").style('fill','orange','important'); 
+      });
+  }
+
+    function unhighlightNodesFromPath(paths){   //refactor later to use class #active and d3.selectAll(#active) to unhighlight
+      var nodes = selectMultipleNodes(paths);
+      nodes.forEach(function(node){
+        node.select("circle").style('fill','white','important'); 
+      });
+  }
+
+  function mouseout(d) {
+    if(focusNode!="" && d.path == focusNode){
+      hover="";
+      notifyChanges();
+      return;}
+    if(_.contains(relatedPaths, d.path)){ // console.log('already focused');
+      return;                             //or make put some glow effect
+    }
+    d3.select(this).select("circle").style('fill','white','important');
+    
+    unhighlightNodesFromPath(relatedPaths); //unhighlight
+    //if there's a focusNode don't reset, keep the relatedFiles of the focusNode
+    if(focusNode==""){  //only reset when there's no focus
+      relatedPaths = [];
+    }else{
+      highlightRelatedFromPath(relatedPaths);
+    }
+    
+
+    setTimeout(function(){  //make some delay so don't change it to quick
+      hover="";
+      notifyChanges();
+    },50);
+
+    
+  }
+  
+  
+  that.metadata = function(meta){
+    _meta = meta;
+  };
+
+  that.relations = function(relations){
+    _relations = relations;
+  };
+
+  that.identifiers = function(identifiers){
+    _identifiers = identifiers;
+  };
+
+  function notifyChanges(){
+    var report = {
+      focusNode: focusNode,
+      relatedPaths: relatedPaths,
+      hover: hover
+    };
+    listener(report);
+  }
+  var state = {};
+  var listener;
+  that.listener = function(callback){
+    listener = callback;  
+  }
+
+  
+  that.test = function(){
+    console.log('test');
+   
+    var focus = selectNodeFromPath('/root/examples').datum();
+      // focus[0].datum(function(d){console.log(d);});
+
+    var paths = ['/root/examples/tessel/index.html','/root/assets/js/meta.js', '/root/bower.json'];
+    setTimeout(function(){ 
+      rightclick(focus);
+       
+      highlightNodesFromPath(paths);  
+    }, 1000);
+
+    setTimeout(function(){ 
+      rightclick(focus);
+       
+      unhighlightNodesFromPath(paths);  
+    }, 2000);
+
+
+  }
+
   return that;
 }
 
-///////////////////////TreeUtilityFunction//////////////////////
-
-function createDirNode(dirName, path){
-  return {name:dirName.trim(), path:formatPath(path), children:[]};
-}
-function createFileNode(nodeName, path){
-  return {name:nodeName.trim(), path:formatPath(path)};
-}
-
-function isFileNode(nodeName){
-  var parts = nodeName.split('.');
-  return parts.length > 1;
-}
-
-function createNode(nodeName, path){
-  if(isFileNode(nodeName)){
-    return createFileNode(nodeName, path);
-  }else{
-    return createDirNode(nodeName, path);
-  }
-}
-
-function formatPath(path){
-  path = path.trim();
-
-  if(path[0] !='/'){
-    path = '/'.concat(path);
-  }
-  if(path[path.length-1]=='/'){
-    path = path.substring(0,path.length-1);
-  }
-  return path;
-}
-
-function addNode(root, nodePath) {
-  var nodePath = formatPath(nodePath);
-  nodePath = nodePath.substring(1,nodePath.length); //drop front slash
-  var parts = nodePath.split('/'); 
-  var current = root;
-
-  if(root.name != parts[0]){
-    throw "root name is not the same: "+root.name +", "+parts[0];
-    return
-  }
-    
-    // loop through the parts and create a nested namespace if necessary
-    for (var i = 1; i < parts.length; i++) {  //start from 1 (ignore the root)
-        var partname = parts[i];
-        //if last part check to see if it's directory of file
-        if(i == parts.length-1){
-          if(isFileNode(partname)){
-            current.children.push({name:partname, path:formatPath(nodePath)}); 
-            break;
-          }
-        }
-        //need to check if we have that sub directory or file
-        var index = containsChild(current, partname);
-        if(index == -1){
-          current.children.push({name:partname, path:formatPath(parts.slice(0,i+1).join('/')), children:[]}); 
-          index = current.children.length-1;
-        }
-        // get a reference to the deepest element in the hierarchy so far
-        current = current.children[index];
-      }
-}
-
-function gotoNode(root, path){
-  var path = formatPath(path);
-  path = path.substring(1,path.length); //drop front slash
-  var parts = path.split('/'); 
-  var current = root;
-
-  if (parts.length==1 && parts[0]==root.name){
-    return root;
-  }
-  // loop through the parts & go as deep to the target
-  for (var i = 1; i < parts.length; i++) {
-    var partname = parts[i];
-
-      //need to check if we have that sub directory or file
-    var index = containsChild(current, partname);
-    if(index == -1){
-        return null;    //before final or at final if not found terminate early
-      }
-    if(i == parts.length-1 && index !=-1){        //only return node found if at last part
-      return current.children[index];
-    } 
-    // get a reference to the deepest element in the hierarchy so far
-    current = current.children[index];
-  }
-}
-
-function removeNode(root, path){
-  var path = formatPath(path);
-      path = path.substring(1,path.length); //drop front slash
-  var parts = path.split('/'); 
-  
-  var targetNodeName = parts.pop();
-  var parentPath = formatPath(parts.join('/'));
-  var parentNode = gotoNode(root, parentPath);
-  if (parentNode==null){  //no node for deletion found
-    return;
-  }
-   var index = containsChild(parentNode, targetNodeName);
-
-   if(index!=-1){
-    parentNode.children.splice(index,1);
-    // parentNode.children[index] = null;
-  }
-}
-
-function containsChild(parentNode, nodeName){ //check if parentNode is a directory before use this
-  if (!parentNode.children) {
-    return -1;
-  }
-  for (i = 0; i < parentNode.children.length; i++) { 
-    if(parentNode.children[i].name==nodeName){
-      return i;
-    }
-  }
-    return -1;  //not found
-}
-
-
-function flatten(root) {
-  var nodes = [], i = 0;
-  // var path ='';
-  function recurse(node,path) {
-    
-    if (node.children) {
-      //generate node.path that has children
-      node.path = path+'/'+node.name;
-      // path = path+'/'+node.name;
-
-      node.size = node.children.reduce(function(p, v) {             
-        return p + recurse(v,node.path);
-      }, 0);
-    }
-    else{
-      //generat node.path with no children
-      node.path = path+'/'+node.name;
-    }
-    nodes.push(node);
-    return node.size;
-  }
-  root.size = recurse(root,'');
-
-  return nodes;
-}
