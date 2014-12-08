@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="css/editor.css">
   <link rel="stylesheet" type="text/css" href="css/explorer_style.css">
   <link rel="stylesheet" type="text/css" href="css/bubble-style.css">
-  <!-- <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"> -->
+  <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
   
 </head>
 <body>
@@ -28,7 +28,8 @@
     </div>
   </div> -->
 
- 
+ <h3 align= "center">Project Explorer</h3>
+
   <div class="container">
 
     <!-- <span><b>Currently Selected:</b></span><span ng-bind-template="{{focusPath}}"></span></br> -->
@@ -36,8 +37,7 @@
     <!-- diagram & detail view row-->
     <div class="row">
       <!-- diagram -->
-
-    <div class="col-md-6">
+    <div class="col-md-7">
       <project-Explorer></project-Explorer>
        
         <!-- search below diagram -->
@@ -47,25 +47,25 @@
     <!-- <div>
       <span><b>Functions:</b></span><span ng-repeat="f in currentMetadata.functions" ng-bind-template="| {{f.name}} |"></span>
     </div> -->
+    
 
-
-    <div ng-controller="aceCtrl" class="col-md-6">
+    <div ng-controller="aceCtrl" class="col-md-5">
       <span><b></span><span ng-bind-template="{{state.focusNode}}"></b></span>
      <div ui-ace="aceOption" ng-model="result.content"></div>
-     <div>
-        <identifier-viewer></identifier-viewer>
-       </div>
     </div>
 
+      <div class="col-md-12">
+        <identifier-viewer></identifier-viewer>
+       </div>
    
 
     </div>
     <!-- End diagram & detail view row-->
 
     <!-- timeline view row -->
-    <div class="row">
-      <p>Project Timeline</p>
-      <!-- <timeline-Chart></timeline-Chart> -->
+    <div class="row" align="center">
+      <h3>Project Timeline</h3>
+      <timeline-Chart></timeline-Chart>
       <button id="g-play-button">Play</button> 
     </div>
 
@@ -105,6 +105,7 @@
   <script src="js/identifier-viewer-directive.js"></script>
   <script src="js/tree_utility.js"></script>
   <script src="js/tree_v2.js"></script>
+  <script src="js/tree_v2-timeline.js"></script>
   <script src="js/bubble.js"></script>
   <script src="js/app.js"></script>
 

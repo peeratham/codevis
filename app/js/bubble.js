@@ -1,6 +1,6 @@
 ForceBubble = function(listener) {
   var chart, clear, click, collide, collisionPadding, connectEvents, data, force, gravity, hashchange, height, idValue, jitter, label, margin, maxRadius, minCollisionRadius, mouseout, mouseover, node, rScale, rValue, textValue, tick, transformData, update, updateActive, updateLabels, updateNodes, width;
-  width = 300;
+  width = 900;
   height = 200;
   data = [];
   node = null;

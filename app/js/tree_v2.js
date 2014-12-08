@@ -2,7 +2,7 @@ function TreeDiagram(p) {
   var firstTime = true;
   var that = {};
   var _parent =  d3.select(p);
-  var _diameter=350;
+  var _diameter=500;
   var _root;
   var duration = 1000;
   var _treeSize = _diameter/2-5;

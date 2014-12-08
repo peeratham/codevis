@@ -2,7 +2,7 @@ function TreeDiagramTimeLine(p) {
   var firstTime = true;
   var that = {};
   var _parent =  d3.select(p);
-  var _diameter=500;
+  var _diameter=600;
   var _root;
   var duration = 1000;
   var _treeSize = _diameter/2-80;
@@ -74,10 +74,10 @@ function TreeDiagramTimeLine(p) {
                     return parent_transform0;
                 }
             )
-            .on("contextmenu", rightclick)
+            // .on("contextmenu", rightclick)
             // .on("mouseover", mouseover)
             // .on("mouseout", mouseout)
-            .on("click", leftclick)
+            //.on("click", leftclick)
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             ;
