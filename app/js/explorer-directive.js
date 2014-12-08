@@ -2,11 +2,11 @@
 
 var codevisComponents = angular.module('codevisComponents',[]);
 
-codevisComponents.directive('projectExplorer',['ProjectTree','Metadata', 'Relations', 'Identifiers',
-	function(ProjectTree, Metadata, Relations, Identifiers) {
+codevisComponents.directive('projectExplorer',['ProjectTree','Functions', 'Relations', 'Identifiers',
+	function(ProjectTree, Functions, Relations, Identifiers) {
 		var link = function(scope, element, attrs){
-			var metadata = Metadata.query(function(data){
-				metadata = data;
+			var functions = Functions.query(function(data){
+				functions = data;
 				// console.log(metadata[]);
 			});
 
@@ -26,7 +26,7 @@ ProjectTree.query(function(data) {
 	tree.data(data);
 	console.log('relations', relations);
 	console.log('identifiers', identifiers);
-	tree.metadata(metadata);
+	tree.functions(functions);
 	tree.relations(relations);
 	tree.identifiers(identifiers);
 	tree.render();
@@ -36,20 +36,10 @@ ProjectTree.query(function(data) {
 
 
 	tree.listener(function(state){
-		console.log('from outside', state);
+		// console.log('from outside', state);
 		scope.state = state;
 		scope.$apply();
-	// 	if(info.focus!=false){
-	// 		// console.log('focus on'+ info.focus.name+'@path:'+info.focus.path);
-	// 		scope.focus = info.focus.name;
-			
-	// 		scope.focusLanguage = info.focus.language;
-	// 		scope.focusPath = info.focus.path;
-	// 		scope.$apply();
 
-	// 	}else{
-	// 		console.log('unfocus');
-	// 	}
 	});
 
 	// tree.addMouseoverListener(function(d){

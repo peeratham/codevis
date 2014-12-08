@@ -1,4 +1,4 @@
-
+ 
 
 var fs = require('fs');
 var _ = require('underscore');
@@ -7,18 +7,18 @@ function identifierProcessing(callback){
 
   var result = {};
 
-  fs.readFile('./app/data/test-report.json', 'utf8', function (err,data) {
+  fs.readFile('./app/data/d3-identifiers.json', 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }
     var metadata = JSON.parse(data);
     for (var path in metadata) {
       if (metadata.hasOwnProperty(path)) {
-         var identifiers = metadata[path].operands.identifiers;
+         var identifiers = metadata[path];
 
          var generics = [
          'null','true','false','self','this','in','on','call','""','each','is','apply',
-         '<anonymous>','___defineGetter__','callback'
+         '<anonymous>','___defineGetter__','callback','require'
 
          ];
          var genericsDict = {}
@@ -46,7 +46,7 @@ function identifierProcessing(callback){
               // console.log('bad numeric',currentId);
               return false;
             }
-            return  length < 20 && length > 3 ;
+            return  length > 3 ;
           }
 
           //generate genericDict
@@ -143,7 +143,7 @@ exports.functionProcessing = functionProcessing;
 exports.test_identifierProcessing = function(callback){
   var result = identifierProcessing(function(result){
     // var matrix = relationMatrix(result);
-    // console.log(JSON.stringify(matrix, undefined, 4));
+    // console.log(JSON.stringify(result, undefined, 4));
     return callback(result);
   });
 }
@@ -162,4 +162,67 @@ exports.relations = function (req, res) {
     res.json(matrix);  
   });
 };
+
+function dependencyProcessing(callback){
+  fs.readFile('./app/data/d3-dependencies.json', 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+
+    dependencyDict = {};
+
+    var metadata = JSON.parse(data);
+    // dependencyDict = data;
+    for (var path in metadata) {
+      dependencyDict[path] = [];
+      var dependencyList = metadata[path];
+      dependencyList.forEach(function(relPath){
+        dependencyDict[path].push(relativeToAbsolute(path,relPath));
+      });
+    }
+    return callback(dependencyDict);
+  });
+}
+
+function relativeToAbsolute(absolute, relative){
+    var count = (relative.match(/\.\.\/+/g) || []).length;
+    var absolutePathList;
+    try{
+        absolutePathList = absolute.split('/');
+        for(i = 0; i<count+1; i++){
+            absolutePathList.pop();
+        }    
+    }catch(err){console.log(err.message)};
+    var result;
+    if(count==0){
+      result = absolutePathList.join('/')+'/'+relative+'.js';
+    }else{
+      result = relative.replace(/(\.\.\/)+/g, absolutePathList.join('/')+'/')+'.js';  
+    }
+    
+    return result;
+}
+
+exports.test_dependencyProcessing = function(callback){
+  var result = dependencyProcessing(function(result){
+    console.log(result);
+    // console.log(JSON.stringify(result, undefined, 4));
+    return callback(result);
+  });
+}
+
+exports.dependencies = function(req, res){
+  var result = dependencyProcessing(function(result){
+    res.json(result);
+  });
+}
+
+exports.functions = function(req, res){
+   fs.readFile('./app/data/d3-functions.json', 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    res.json(JSON.parse(data));
+  });
+}
 

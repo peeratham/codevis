@@ -5,8 +5,10 @@ var app = express();
 
 app.use(express.static('app'));
 
-app.get('/api/relations', api.relations);
+app.get('/api/relations', api.dependencies);
 app.get('/api/identifiers', api.identifiers);
+app.get('/api/functions', api.functions);
+
 
 var server = app.listen(8000, function () {
 

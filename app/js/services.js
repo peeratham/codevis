@@ -6,14 +6,14 @@ var codevisServices = angular.module('codevisServices', ['ngResource']);
 codevisServices.factory('ProjectTree', ['$resource',
 	function($resource){
 		return $resource('data/:path.json', {}, {
-			query: {method:'GET', params:{path:'test-structure'}}
+			query: {method:'GET', params:{path:'d3-structure'}}
 		});
 	}]);
 
-codevisServices.factory('Metadata', ['$resource',
+codevisServices.factory('Functions', ['$resource',
 	function($resource){
-		return $resource('data/:path.json', {}, {
-			query: {method:'GET', params:{path:'test-report'}}
+		return $resource('api/:path', {}, {
+			query: {method:'GET', params:{path:'functions'}}
 		});
 	}]);
 

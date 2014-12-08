@@ -13,9 +13,9 @@
   <link rel="stylesheet" type="text/css" href="css/nodelink.css">
   <link rel="stylesheet" type="text/css" href="css/editor.css">
   <link rel="stylesheet" type="text/css" href="css/explorer_style.css">
+  <link rel="stylesheet" type="text/css" href="css/bubble-style.css">
   <!-- <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"> -->
   
-
 </head>
 <body>
   <div class="page-header" align="center">
@@ -37,11 +37,9 @@
     <div class="row">
       <!-- diagram -->
 
-    <div class="col-md-7">
+    <div class="col-md-6">
       <project-Explorer></project-Explorer>
-       <div class="col-md-12">
-        <identifier-viewer></identifier-viewer>
-       </div>
+       
         <!-- search below diagram -->
     </div>
 
@@ -51,9 +49,12 @@
     </div> -->
 
 
-    <div ng-controller="aceCtrl" class="col-md-5">
-      <br>
+    <div ng-controller="aceCtrl" class="col-md-6">
+      <span><b></span><span ng-bind-template="{{state.focusNode}}"></b></span>
      <div ui-ace="aceOption" ng-model="result.content"></div>
+     <div class="col-md-12">
+        <identifier-viewer></identifier-viewer>
+       </div>
     </div>
 
    
@@ -64,7 +65,7 @@
     <!-- timeline view row -->
     <div class="row">
       <p>Project Timeline</p>
-      <timeline-Chart></timeline-Chart>
+      <!-- <timeline-Chart></timeline-Chart> -->
       <button id="g-play-button">Play</button> 
     </div>
 

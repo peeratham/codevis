@@ -1,0 +1,1314 @@
+{
+    "/root/index.js": [
+        "jsdom",
+        "./d3"
+    ],
+    "/root/src/d3.js": [
+        "start",
+        "compat/",
+        "arrays/",
+        "behavior/",
+        "color/",
+        "core/",
+        "dsv/",
+        "event/",
+        "format/",
+        "geo/",
+        "geom/",
+        "interpolate/",
+        "layout/",
+        "math/",
+        "scale/",
+        "selection/",
+        "svg/",
+        "time/",
+        "transition/",
+        "xhr/",
+        "end"
+    ],
+    "/root/src/end.js": [],
+    "/root/src/start.js": [],
+    "/root/lib/colorbrewer/colorbrewer.js": [],
+    "/root/lib/science/science.js": [],
+    "/root/lib/science/science.lin.js": [],
+    "/root/lib/science/science.lin.min.js": [],
+    "/root/lib/science/science.min.js": [],
+    "/root/lib/science/science.stats.js": [],
+    "/root/lib/science/science.stats.min.js": [],
+    "/root/src/arrays/ascending.js": [],
+    "/root/src/arrays/bisect.js": [
+        "ascending"
+    ],
+    "/root/src/arrays/descending.js": [],
+    "/root/src/arrays/entries.js": [],
+    "/root/src/arrays/extent.js": [],
+    "/root/src/arrays/index.js": [
+        "ascending",
+        "descending",
+        "min",
+        "max",
+        "extent",
+        "sum",
+        "mean",
+        "median",
+        "quantile",
+        "bisect",
+        "shuffle",
+        "permute",
+        "pairs",
+        "zip",
+        "transpose",
+        "keys",
+        "values",
+        "entries",
+        "merge",
+        "range",
+        "nest",
+        "map",
+        "set"
+    ],
+    "/root/src/arrays/keys.js": [],
+    "/root/src/arrays/map.js": [
+        "../core/class"
+    ],
+    "/root/src/arrays/max.js": [],
+    "/root/src/arrays/mean.js": [
+        "../math/number"
+    ],
+    "/root/src/arrays/median.js": [
+        "../math/number",
+        "ascending",
+        "quantile"
+    ],
+    "/root/src/arrays/merge.js": [],
+    "/root/src/arrays/min.js": [],
+    "/root/src/arrays/nest.js": [
+        "map"
+    ],
+    "/root/src/arrays/pairs.js": [],
+    "/root/src/arrays/permute.js": [],
+    "/root/src/arrays/quantile.js": [],
+    "/root/src/arrays/range.js": [
+        "../math/abs"
+    ],
+    "/root/src/arrays/set.js": [
+        "../core/class",
+        "map"
+    ],
+    "/root/src/arrays/shuffle.js": [],
+    "/root/src/arrays/sum.js": [
+        "../math/number"
+    ],
+    "/root/src/arrays/transpose.js": [
+        "zip"
+    ],
+    "/root/src/arrays/values.js": [],
+    "/root/src/arrays/zip.js": [
+        "min"
+    ],
+    "/root/src/behavior/behavior.js": [],
+    "/root/src/behavior/drag.js": [
+        "../core/document",
+        "../core/rebind",
+        "../event/drag",
+        "../event/event",
+        "../event/mouse",
+        "../event/touch",
+        "behavior"
+    ],
+    "/root/src/behavior/index.js": [
+        "behavior",
+        "drag",
+        "zoom"
+    ],
+    "/root/src/behavior/zoom.js": [
+        "../core/document",
+        "../core/rebind",
+        "../event/drag",
+        "../event/event",
+        "../event/mouse",
+        "../event/touches",
+        "../selection/selection",
+        "../interpolate/zoom",
+        "behavior"
+    ],
+    "/root/src/color/color.js": [],
+    "/root/src/color/hcl.js": [
+        "../math/trigonometry",
+        "color",
+        "lab",
+        "rgb"
+    ],
+    "/root/src/color/hsl.js": [
+        "color",
+        "rgb"
+    ],
+    "/root/src/color/index.js": [
+        "color",
+        "rgb",
+        "hsl",
+        "hcl",
+        "lab",
+        "xyz"
+    ],
+    "/root/src/color/lab.js": [
+        "../math/trigonometry",
+        "color",
+        "hcl",
+        "rgb"
+    ],
+    "/root/src/color/rgb.js": [
+        "../arrays/map",
+        "color",
+        "hsl",
+        "lab",
+        "xyz"
+    ],
+    "/root/src/color/xyz.js": [],
+    "/root/src/compat/date.js": [],
+    "/root/src/compat/index.js": [
+        "date",
+        "style"
+    ],
+    "/root/src/compat/style.js": [
+        "../core/document"
+    ],
+    "/root/src/core/array.js": [],
+    "/root/src/core/class.js": [],
+    "/root/src/core/document.js": [
+        "array"
+    ],
+    "/root/src/core/functor.js": [],
+    "/root/src/core/identity.js": [],
+    "/root/src/core/index.js": [
+        "functor",
+        "ns",
+        "rebind"
+    ],
+    "/root/src/core/noop.js": [],
+    "/root/src/core/ns.js": [],
+    "/root/src/core/rebind.js": [],
+    "/root/src/core/source.js": [],
+    "/root/src/core/subclass.js": [],
+    "/root/src/core/target.js": [],
+    "/root/src/core/true.js": [],
+    "/root/src/core/vendor.js": [],
+    "/root/src/dsv/csv.js": [
+        "dsv"
+    ],
+    "/root/src/dsv/dsv.js": [
+        "../arrays/set",
+        "../xhr/xhr"
+    ],
+    "/root/src/dsv/index.js": [
+        "dsv",
+        "csv",
+        "tsv"
+    ],
+    "/root/src/dsv/tsv.js": [
+        "dsv"
+    ],
+    "/root/src/event/dispatch.js": [
+        "../arrays/map"
+    ],
+    "/root/src/event/drag.js": [
+        "../core/document",
+        "../core/vendor",
+        "../selection/on"
+    ],
+    "/root/src/event/event.js": [
+        "dispatch"
+    ],
+    "/root/src/event/index.js": [
+        "dispatch",
+        "event",
+        "mouse",
+        "touch",
+        "touches",
+        "timer"
+    ],
+    "/root/src/event/mouse.js": [
+        "../core/document",
+        "event"
+    ],
+    "/root/src/event/timer.js": [
+        "../core/document",
+        "../core/vendor"
+    ],
+    "/root/src/event/touch.js": [
+        "event",
+        "mouse"
+    ],
+    "/root/src/event/touches.js": [
+        "../core/array",
+        "event",
+        "mouse"
+    ],
+    "/root/src/format/collapse.js": [],
+    "/root/src/format/format.js": [
+        "../locale/en-US"
+    ],
+    "/root/src/format/formatPrefix.js": [
+        "precision",
+        "round",
+        "../math/abs"
+    ],
+    "/root/src/format/index.js": [
+        "format",
+        "formatPrefix",
+        "requote",
+        "round"
+    ],
+    "/root/src/format/precision.js": [],
+    "/root/src/format/requote.js": [],
+    "/root/src/format/round.js": [],
+    "/root/src/geo/albers-usa.js": [
+        "albers",
+        "conic-equal-area",
+        "geo"
+    ],
+    "/root/src/geo/albers.js": [
+        "conic-equal-area",
+        "geo"
+    ],
+    "/root/src/geo/area.js": [
+        "../core/noop",
+        "../math/adder",
+        "../math/trigonometry",
+        "geo",
+        "stream"
+    ],
+    "/root/src/geo/azimuthal-equal-area.js": [
+        "azimuthal",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/azimuthal-equidistant.js": [
+        "../core/identity",
+        "azimuthal",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/azimuthal.js": [],
+    "/root/src/geo/bounds.js": [
+        "../math/abs",
+        "geo",
+        "stream",
+        "area",
+        "cartesian",
+        "spherical"
+    ],
+    "/root/src/geo/cartesian.js": [],
+    "/root/src/geo/centroid.js": [
+        "../core/noop",
+        "../math/trigonometry",
+        "geo",
+        "stream"
+    ],
+    "/root/src/geo/circle.js": [
+        "../math/trigonometry",
+        "cartesian",
+        "geo",
+        "rotation",
+        "spherical"
+    ],
+    "/root/src/geo/clip-antimeridian.js": [
+        "../core/true",
+        "../math/abs",
+        "../math/trigonometry",
+        "clip"
+    ],
+    "/root/src/geo/clip-circle.js": [
+        "../math/abs",
+        "../math/trigonometry",
+        "cartesian",
+        "clip",
+        "circle",
+        "spherical",
+        "point-in-polygon"
+    ],
+    "/root/src/geo/clip-extent.js": [
+        "../arrays/merge",
+        "../math/abs",
+        "../math/trigonometry",
+        "../geom/clip-line",
+        "geo",
+        "clip",
+        "clip-polygon"
+    ],
+    "/root/src/geo/clip-polygon.js": [
+        "../math/trigonometry",
+        "spherical"
+    ],
+    "/root/src/geo/clip.js": [
+        "../arrays/merge",
+        "../core/noop",
+        "../math/trigonometry",
+        "clip-polygon"
+    ],
+    "/root/src/geo/compose.js": [],
+    "/root/src/geo/conic-conformal.js": [
+        "../math/abs",
+        "../math/trigonometry",
+        "conic",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/conic-equal-area.js": [
+        "../math/trigonometry",
+        "geo",
+        "conic",
+        "projection"
+    ],
+    "/root/src/geo/conic-equidistant.js": [
+        "../math/abs",
+        "../math/trigonometry",
+        "conic",
+        "equirectangular",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/conic.js": [
+        "../math/trigonometry",
+        "projection"
+    ],
+    "/root/src/geo/distance.js": [
+        "../math/trigonometry",
+        "geo"
+    ],
+    "/root/src/geo/equirectangular.js": [
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/geo.js": [],
+    "/root/src/geo/gnomonic.js": [
+        "azimuthal",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/graticule.js": [
+        "../arrays/range",
+        "../math/abs",
+        "../math/trigonometry",
+        "geo"
+    ],
+    "/root/src/geo/greatArc.js": [
+        "../core/source",
+        "../core/target",
+        "geo",
+        "distance"
+    ],
+    "/root/src/geo/index.js": [
+        "geo",
+        "area",
+        "bounds",
+        "centroid",
+        "circle",
+        "distance",
+        "graticule",
+        "greatArc",
+        "interpolate",
+        "length",
+        "path",
+        "path-area",
+        "path-buffer",
+        "path-centroid",
+        "path-context",
+        "projection",
+        "rotation",
+        "stream",
+        "transform",
+        "albers",
+        "albers-usa",
+        "azimuthal",
+        "azimuthal-equal-area",
+        "azimuthal-equidistant",
+        "conic-conformal",
+        "conic-equal-area",
+        "conic-equidistant",
+        "equirectangular",
+        "gnomonic",
+        "mercator",
+        "orthographic",
+        "stereographic",
+        "transverse-mercator"
+    ],
+    "/root/src/geo/interpolate.js": [
+        "../math/trigonometry",
+        "geo"
+    ],
+    "/root/src/geo/length.js": [
+        "../core/noop",
+        "../math/abs",
+        "../math/trigonometry",
+        "geo",
+        "stream"
+    ],
+    "/root/src/geo/mercator.js": [
+        "../math/trigonometry",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/orthographic.js": [
+        "azimuthal",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/path-area.js": [
+        "../core/noop",
+        "../math/abs"
+    ],
+    "/root/src/geo/path-bounds.js": [
+        "../core/noop"
+    ],
+    "/root/src/geo/path-buffer.js": [],
+    "/root/src/geo/path-centroid.js": [
+        "centroid"
+    ],
+    "/root/src/geo/path-context.js": [
+        "../core/noop",
+        "../math/trigonometry"
+    ],
+    "/root/src/geo/path.js": [
+        "../core/identity",
+        "../math/trigonometry",
+        "albers-usa",
+        "area",
+        "bounds",
+        "centroid",
+        "geo",
+        "path-area",
+        "path-bounds",
+        "path-buffer",
+        "path-centroid",
+        "path-context",
+        "projection",
+        "resample",
+        "stream"
+    ],
+    "/root/src/geo/point-in-polygon.js": [
+        "geo",
+        "area",
+        "cartesian",
+        "../math/abs",
+        "../math/trigonometry"
+    ],
+    "/root/src/geo/projection.js": [
+        "../core/identity",
+        "../core/rebind",
+        "../math/trigonometry",
+        "clip-antimeridian",
+        "clip-circle",
+        "clip-extent",
+        "compose",
+        "geo",
+        "path",
+        "resample",
+        "rotation",
+        "transform"
+    ],
+    "/root/src/geo/resample.js": [
+        "../math/abs",
+        "../math/trigonometry",
+        "cartesian"
+    ],
+    "/root/src/geo/rotation.js": [
+        "../math/trigonometry",
+        "equirectangular",
+        "geo"
+    ],
+    "/root/src/geo/spherical.js": [
+        "../math/abs",
+        "../math/trigonometry"
+    ],
+    "/root/src/geo/stereographic.js": [
+        "azimuthal",
+        "geo",
+        "projection"
+    ],
+    "/root/src/geo/stream.js": [
+        "geo"
+    ],
+    "/root/src/geo/transform.js": [
+        "geo",
+        "../core/array"
+    ],
+    "/root/src/geo/transverse-mercator.js": [
+        "../math/trigonometry",
+        "geo",
+        "mercator"
+    ],
+    "/root/src/geom/clip-line.js": [
+        "../math/trigonometry"
+    ],
+    "/root/src/geom/delaunay.js": [
+        "geom"
+    ],
+    "/root/src/geom/geom.js": [],
+    "/root/src/geom/hull.js": [
+        "../core/functor",
+        "../math/trigonometry",
+        "geom",
+        "point"
+    ],
+    "/root/src/geom/index.js": [
+        "geom",
+        "hull",
+        "polygon",
+        "voronoi",
+        "delaunay",
+        "quadtree"
+    ],
+    "/root/src/geom/point.js": [],
+    "/root/src/geom/polygon.js": [
+        "../core/subclass",
+        "geom"
+    ],
+    "/root/src/geom/quadtree.js": [
+        "../core/functor",
+        "../math/abs",
+        "geom",
+        "point"
+    ],
+    "/root/src/geom/voronoi.js": [
+        "../core/functor",
+        "voronoi/",
+        "geom",
+        "point"
+    ],
+    "/root/src/interpolate/array.js": [
+        "interpolate"
+    ],
+    "/root/src/interpolate/ease.js": [
+        "../arrays/map",
+        "../core/array",
+        "../core/identity",
+        "../math/trigonometry"
+    ],
+    "/root/src/interpolate/hcl.js": [
+        "../color/hcl"
+    ],
+    "/root/src/interpolate/hsl.js": [
+        "../color/hsl"
+    ],
+    "/root/src/interpolate/index.js": [
+        "array",
+        "ease",
+        "hcl",
+        "hsl",
+        "interpolate",
+        "lab",
+        "number",
+        "object",
+        "rgb",
+        "round",
+        "string",
+        "transform",
+        "uninterpolate",
+        "zoom"
+    ],
+    "/root/src/interpolate/interpolate.js": [
+        "../color/color",
+        "../color/rgb",
+        "rgb",
+        "object",
+        "array",
+        "number",
+        "string"
+    ],
+    "/root/src/interpolate/lab.js": [
+        "../color/lab"
+    ],
+    "/root/src/interpolate/number.js": [],
+    "/root/src/interpolate/object.js": [
+        "interpolate"
+    ],
+    "/root/src/interpolate/rgb.js": [
+        "../color/rgb"
+    ],
+    "/root/src/interpolate/round.js": [],
+    "/root/src/interpolate/string.js": [
+        "number"
+    ],
+    "/root/src/interpolate/transform.js": [
+        "../math/transform",
+        "number"
+    ],
+    "/root/src/interpolate/uninterpolate.js": [],
+    "/root/src/interpolate/zoom.js": [
+        "../math/trigonometry"
+    ],
+    "/root/src/layout/bundle.js": [
+        "layout"
+    ],
+    "/root/src/layout/chord.js": [
+        "../arrays/range",
+        "../math/trigonometry",
+        "layout"
+    ],
+    "/root/src/layout/cluster.js": [
+        "../arrays/max",
+        "layout",
+        "hierarchy",
+        "tree"
+    ],
+    "/root/src/layout/force.js": [
+        "../behavior/drag",
+        "../core/identity",
+        "../core/rebind",
+        "../event/event",
+        "../event/dispatch",
+        "../event/timer",
+        "../geom/quadtree",
+        "layout"
+    ],
+    "/root/src/layout/hierarchy.js": [
+        "../arrays/merge",
+        "../core/rebind",
+        "layout"
+    ],
+    "/root/src/layout/histogram.js": [
+        "../arrays/bisect",
+        "../arrays/min",
+        "../arrays/max",
+        "../core/functor",
+        "layout"
+    ],
+    "/root/src/layout/index.js": [
+        "layout",
+        "bundle",
+        "chord",
+        "force",
+        "partition",
+        "pie",
+        "stack",
+        "histogram",
+        "hierarchy",
+        "pack",
+        "cluster",
+        "tree",
+        "treemap"
+    ],
+    "/root/src/layout/layout.js": [],
+    "/root/src/layout/pack.js": [
+        "layout",
+        "hierarchy"
+    ],
+    "/root/src/layout/partition.js": [
+        "layout",
+        "hierarchy"
+    ],
+    "/root/src/layout/pie.js": [
+        "../arrays/range",
+        "../arrays/sum",
+        "../math/trigonometry",
+        "layout"
+    ],
+    "/root/src/layout/stack.js": [
+        "../arrays/map",
+        "../arrays/permute",
+        "../arrays/range",
+        "../core/identity",
+        "layout"
+    ],
+    "/root/src/layout/tree.js": [
+        "layout",
+        "hierarchy"
+    ],
+    "/root/src/layout/treemap.js": [
+        "layout",
+        "hierarchy"
+    ],
+    "/root/src/locale/ca-ES.js": [
+        "locale"
+    ],
+    "/root/src/locale/de-DE.js": [
+        "locale"
+    ],
+    "/root/src/locale/en-GB.js": [
+        "locale"
+    ],
+    "/root/src/locale/en-US.js": [
+        "locale"
+    ],
+    "/root/src/locale/es-ES.js": [
+        "locale"
+    ],
+    "/root/src/locale/fi-FI.js": [
+        "locale"
+    ],
+    "/root/src/locale/fr-FR.js": [
+        "locale"
+    ],
+    "/root/src/locale/he-IL.js": [
+        "locale"
+    ],
+    "/root/src/locale/locale.js": [
+        "number-format",
+        "time-format"
+    ],
+    "/root/src/locale/mk-MK.js": [
+        "locale"
+    ],
+    "/root/src/locale/number-format.js": [
+        "../arrays/map",
+        "../core/identity",
+        "../format/formatPrefix",
+        "../format/precision",
+        "../format/round"
+    ],
+    "/root/src/locale/pt-BR.js": [
+        "locale"
+    ],
+    "/root/src/locale/ru-RU.js": [
+        "locale"
+    ],
+    "/root/src/locale/time-format.js": [
+        "../arrays/map",
+        "../format/requote",
+        "../math/abs",
+        "../time/day",
+        "../time/time",
+        "../time/week",
+        "../time/interval"
+    ],
+    "/root/src/locale/time-scale.js": [],
+    "/root/src/locale/zh-CN.js": [
+        "locale"
+    ],
+    "/root/src/math/abs.js": [],
+    "/root/src/math/adder.js": [],
+    "/root/src/math/index.js": [
+        "random",
+        "transform"
+    ],
+    "/root/src/math/number.js": [],
+    "/root/src/math/random.js": [],
+    "/root/src/math/transform.js": [
+        "../core/document",
+        "../core/ns"
+    ],
+    "/root/src/math/trigonometry.js": [],
+    "/root/src/scale/bilinear.js": [],
+    "/root/src/scale/category.js": [
+        "../color/rgb",
+        "ordinal",
+        "scale"
+    ],
+    "/root/src/scale/identity.js": [
+        "linear",
+        "scale"
+    ],
+    "/root/src/scale/index.js": [
+        "scale",
+        "linear",
+        "log",
+        "pow",
+        "sqrt",
+        "ordinal",
+        "category",
+        "quantile",
+        "quantize",
+        "threshold",
+        "identity"
+    ],
+    "/root/src/scale/linear.js": [
+        "../arrays/range",
+        "../core/rebind",
+        "../interpolate/interpolate",
+        "../interpolate/round",
+        "../interpolate/uninterpolate",
+        "../format/format",
+        "../math/abs",
+        "bilinear",
+        "nice",
+        "polylinear",
+        "scale"
+    ],
+    "/root/src/scale/log.js": [
+        "../format/format",
+        "linear",
+        "nice",
+        "scale"
+    ],
+    "/root/src/scale/nice.js": [
+        "../core/identity"
+    ],
+    "/root/src/scale/ordinal.js": [
+        "../arrays/map",
+        "../arrays/range",
+        "scale"
+    ],
+    "/root/src/scale/polylinear.js": [
+        "../arrays/bisect"
+    ],
+    "/root/src/scale/pow.js": [
+        "linear",
+        "scale"
+    ],
+    "/root/src/scale/quantile.js": [
+        "../arrays/ascending",
+        "../arrays/bisect",
+        "../arrays/quantile",
+        "../math/number",
+        "scale"
+    ],
+    "/root/src/scale/quantize.js": [
+        "scale"
+    ],
+    "/root/src/scale/scale.js": [],
+    "/root/src/scale/sqrt.js": [
+        "pow",
+        "scale"
+    ],
+    "/root/src/scale/threshold.js": [
+        "../arrays/bisect",
+        "scale"
+    ],
+    "/root/src/selection/append.js": [
+        "../core/document",
+        "../core/ns",
+        "selection"
+    ],
+    "/root/src/selection/attr.js": [
+        "../core/ns",
+        "selection"
+    ],
+    "/root/src/selection/call.js": [
+        "../core/array",
+        "selection"
+    ],
+    "/root/src/selection/classed.js": [
+        "../format/collapse",
+        "../format/requote",
+        "selection"
+    ],
+    "/root/src/selection/data.js": [
+        "../arrays/map",
+        "../arrays/set",
+        "selection"
+    ],
+    "/root/src/selection/datum.js": [
+        "selection"
+    ],
+    "/root/src/selection/each.js": [
+        "selection"
+    ],
+    "/root/src/selection/empty.js": [
+        "selection"
+    ],
+    "/root/src/selection/enter-insert.js": [
+        "selection",
+        "enter"
+    ],
+    "/root/src/selection/enter-select.js": [
+        "selection",
+        "enter"
+    ],
+    "/root/src/selection/enter.js": [
+        "../core/subclass",
+        "selection",
+        "enter-select",
+        "enter-insert"
+    ],
+    "/root/src/selection/filter.js": [
+        "selection"
+    ],
+    "/root/src/selection/html.js": [
+        "selection"
+    ],
+    "/root/src/selection/index.js": [
+        "selection"
+    ],
+    "/root/src/selection/insert.js": [
+        "selection"
+    ],
+    "/root/src/selection/interrupt.js": [
+        "selection"
+    ],
+    "/root/src/selection/node.js": [
+        "selection"
+    ],
+    "/root/src/selection/on.js": [
+        "../arrays/map",
+        "../core/array",
+        "../core/document",
+        "../core/noop",
+        "../event/event",
+        "../format/requote",
+        "selection"
+    ],
+    "/root/src/selection/order.js": [
+        "selection"
+    ],
+    "/root/src/selection/property.js": [
+        "selection"
+    ],
+    "/root/src/selection/remove.js": [
+        "selection"
+    ],
+    "/root/src/selection/select.js": [
+        "selection"
+    ],
+    "/root/src/selection/selectAll.js": [
+        "../core/array",
+        "selection"
+    ],
+    "/root/src/selection/selection.js": [
+        "../core/array",
+        "../core/document",
+        "../core/subclass",
+        "../core/vendor",
+        "select",
+        "selectAll",
+        "attr",
+        "classed",
+        "style",
+        "property",
+        "text",
+        "html",
+        "append",
+        "insert",
+        "remove",
+        "data",
+        "datum",
+        "filter",
+        "order",
+        "sort",
+        "on",
+        "each",
+        "call",
+        "empty",
+        "node",
+        "size",
+        "enter",
+        "transition",
+        "interrupt"
+    ],
+    "/root/src/selection/size.js": [
+        "each"
+    ],
+    "/root/src/selection/sort.js": [
+        "../arrays/ascending",
+        "selection"
+    ],
+    "/root/src/selection/style.js": [
+        "../core/document",
+        "selection"
+    ],
+    "/root/src/selection/text.js": [
+        "selection"
+    ],
+    "/root/src/selection/transition.js": [
+        "selection"
+    ],
+    "/root/src/svg/arc.js": [
+        "../core/functor",
+        "../math/trigonometry",
+        "svg"
+    ],
+    "/root/src/svg/area-radial.js": [
+        "area",
+        "svg",
+        "line-radial"
+    ],
+    "/root/src/svg/area.js": [
+        "../core/functor",
+        "../core/identity",
+        "../core/true",
+        "../geom/point",
+        "svg",
+        "line"
+    ],
+    "/root/src/svg/axis.js": [
+        "../core/identity",
+        "../math/trigonometry",
+        "../scale/linear",
+        "../scale/scale",
+        "../selection/selection",
+        "../transition/transition",
+        "svg"
+    ],
+    "/root/src/svg/brush.js": [
+        "../core/identity",
+        "../core/document",
+        "../core/rebind",
+        "../event/drag",
+        "../event/event",
+        "../event/mouse",
+        "../scale/scale",
+        "../selection/selection",
+        "svg"
+    ],
+    "/root/src/svg/chord.js": [
+        "../core/functor",
+        "../core/source",
+        "../core/target",
+        "../math/trigonometry",
+        "arc",
+        "svg"
+    ],
+    "/root/src/svg/diagonal-radial.js": [
+        "arc",
+        "diagonal",
+        "svg"
+    ],
+    "/root/src/svg/diagonal.js": [
+        "../core/functor",
+        "../core/source",
+        "../core/target",
+        "svg"
+    ],
+    "/root/src/svg/index.js": [
+        "svg",
+        "arc",
+        "line",
+        "line-radial",
+        "area",
+        "area-radial",
+        "chord",
+        "diagonal",
+        "diagonal-radial",
+        "symbol",
+        "axis",
+        "brush"
+    ],
+    "/root/src/svg/line-radial.js": [
+        "arc",
+        "line",
+        "svg"
+    ],
+    "/root/src/svg/line.js": [
+        "../arrays/map",
+        "../core/functor",
+        "../core/identity",
+        "../core/true",
+        "../geom/point",
+        "../math/abs",
+        "../math/trigonometry",
+        "svg"
+    ],
+    "/root/src/svg/svg.js": [],
+    "/root/src/svg/symbol.js": [
+        "../arrays/map",
+        "../core/functor",
+        "../math/trigonometry",
+        "svg"
+    ],
+    "/root/src/time/day.js": [
+        "interval",
+        "time",
+        "year"
+    ],
+    "/root/src/time/format-iso.js": [
+        "format",
+        "format-utc"
+    ],
+    "/root/src/time/format-utc.js": [
+        "format"
+    ],
+    "/root/src/time/format.js": [
+        "../locale/en-US",
+        "time"
+    ],
+    "/root/src/time/hour.js": [
+        "interval",
+        "time"
+    ],
+    "/root/src/time/index.js": [
+        "time",
+        "format",
+        "format-utc",
+        "format-iso",
+        "interval",
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year",
+        "scale",
+        "scale-utc"
+    ],
+    "/root/src/time/interval.js": [
+        "time"
+    ],
+    "/root/src/time/minute.js": [
+        "interval",
+        "time"
+    ],
+    "/root/src/time/month.js": [
+        "day",
+        "interval",
+        "time"
+    ],
+    "/root/src/time/scale-utc.js": [
+        "../core/true",
+        "../scale/linear",
+        "scale",
+        "format-utc"
+    ],
+    "/root/src/time/scale.js": [
+        "../arrays/bisect",
+        "../arrays/range",
+        "../core/identity",
+        "../core/true",
+        "../scale/linear",
+        "../scale/nice",
+        "format",
+        "day",
+        "hour",
+        "minute",
+        "month",
+        "second",
+        "time",
+        "week",
+        "year"
+    ],
+    "/root/src/time/second.js": [
+        "interval",
+        "time"
+    ],
+    "/root/src/time/time.js": [],
+    "/root/src/time/week.js": [
+        "day",
+        "interval",
+        "time",
+        "year"
+    ],
+    "/root/src/time/year.js": [
+        "day",
+        "interval",
+        "time"
+    ],
+    "/root/src/transition/attr.js": [
+        "../core/ns",
+        "../interpolate/interpolate",
+        "../interpolate/transform",
+        "transition",
+        "tween"
+    ],
+    "/root/src/transition/delay.js": [
+        "../selection/each",
+        "transition"
+    ],
+    "/root/src/transition/duration.js": [
+        "../selection/each",
+        "transition"
+    ],
+    "/root/src/transition/each.js": [
+        "../selection/each",
+        "transition"
+    ],
+    "/root/src/transition/ease.js": [
+        "../interpolate/ease",
+        "../selection/each",
+        "transition"
+    ],
+    "/root/src/transition/filter.js": [
+        "../selection/filter",
+        "transition"
+    ],
+    "/root/src/transition/index.js": [
+        "transition"
+    ],
+    "/root/src/transition/remove.js": [
+        "transition"
+    ],
+    "/root/src/transition/select.js": [
+        "../selection/select",
+        "transition"
+    ],
+    "/root/src/transition/selectAll.js": [
+        "../selection/selectAll",
+        "transition"
+    ],
+    "/root/src/transition/style.js": [
+        "../core/document",
+        "../interpolate/interpolate",
+        "transition",
+        "tween"
+    ],
+    "/root/src/transition/subtransition.js": [
+        "transition"
+    ],
+    "/root/src/transition/text.js": [
+        "transition",
+        "tween"
+    ],
+    "/root/src/transition/transition.js": [
+        "../arrays/map",
+        "../core/subclass",
+        "../core/true",
+        "../event/dispatch",
+        "../event/timer",
+        "../selection/selection",
+        "select",
+        "selectAll",
+        "filter",
+        "attr",
+        "style",
+        "text",
+        "remove",
+        "ease",
+        "delay",
+        "duration",
+        "each",
+        "subtransition",
+        "tween"
+    ],
+    "/root/src/transition/tween.js": [
+        "../selection/each",
+        "transition"
+    ],
+    "/root/src/xhr/html.js": [
+        "../core/document",
+        "xhr"
+    ],
+    "/root/src/xhr/index.js": [
+        "xhr",
+        "text",
+        "json",
+        "html",
+        "xml"
+    ],
+    "/root/src/xhr/json.js": [
+        "xhr"
+    ],
+    "/root/src/xhr/text.js": [
+        "xhr"
+    ],
+    "/root/src/xhr/xhr.js": [
+        "../core/array",
+        "../core/document",
+        "../core/identity",
+        "../core/rebind",
+        "../event/dispatch"
+    ],
+    "/root/src/xhr/xml.js": [
+        "xhr"
+    ],
+    "/root/src/geom/voronoi/beach.js": [
+        "../../math/abs"
+    ],
+    "/root/src/geom/voronoi/cell.js": [
+        "../../math/abs"
+    ],
+    "/root/src/geom/voronoi/circle.js": [],
+    "/root/src/geom/voronoi/clip.js": [
+        "../../math/abs",
+        "../clip-line"
+    ],
+    "/root/src/geom/voronoi/edge.js": [],
+    "/root/src/geom/voronoi/index.js": [
+        "../../math/trigonometry",
+        "beach",
+        "cell",
+        "circle",
+        "clip",
+        "edge",
+        "red-black"
+    ],
+    "/root/src/geom/voronoi/red-black.js": []
+}

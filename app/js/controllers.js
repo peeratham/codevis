@@ -12,6 +12,7 @@ codevisControllers.controller('mainCtrl',['$scope','$window','ProjectTree',
 		$scope.focusPath = '';
 		$scope.currentMetadata = '';
 		$scope.state = {};
+		$scope.identifier ='';
 
 	}]);
 
@@ -23,9 +24,6 @@ codevisControllers.controller('aceCtrl', [ '$scope','$http',
 	$scope.fileContent = '';
 	$scope.defaultDataPath = 'data';
 
-	// $scope.$watch('state',function(){
-	// 	console.log($scope.state.hover);
-	// });
 
 	$scope.aceOption= {
 		// mode: '',
@@ -44,11 +42,12 @@ codevisControllers.controller('aceCtrl', [ '$scope','$http',
 			_ace.setReadOnly(true);
 			_ace.session.setFoldStyle('markbeginend');
 			// _ace.setTheme("ace/theme/vibrant_ink");
-			$scope.$watch('state',function(){
+			$scope.$watch('state.focusNode',function(){
 					// var target_path = $scope.defaultDataPath+$scope.state.hover;
-					if($scope.state.hover !=""){
-						var target_path = $scope.defaultDataPath+$scope.state.hover;
-						console.log($scope.defaultDataPath+$scope.state.hover);
+
+					if($scope.state.focusNode !=""){
+						var target_path = $scope.defaultDataPath+$scope.state.focusNode;
+						// console.log($scope.defaultDataPath+$scope.state.hover);
 
 							$http.get(target_path).success(function(data){
 								if(typeof data =='object'){
@@ -58,10 +57,10 @@ codevisControllers.controller('aceCtrl', [ '$scope','$http',
 								_ace.insert(data);
 								
 								_ace.session.foldAll(1,999,1);
-								var folds = _ace.session.getAllFolds();
-								_ace.session.expandFolds(folds);
-								folds = _ace.session.getAllFolds();
-								_ace.session.expandFolds(folds);
+								// var folds = _ace.session.getAllFolds();
+								// _ace.session.expandFolds(folds);
+								// folds = _ace.session.getAllFolds();
+								// _ace.session.expandFolds(folds);
 								_ace.gotoLine(0);
 
 							});	
@@ -69,9 +68,22 @@ codevisControllers.controller('aceCtrl', [ '$scope','$http',
 					if($scope.state.focusNode==""){
 						_ace.setValue('');	
 					}
-
-
 			});
+			var last="";
+			$scope.$watch('identifier',function(){
+				var selected = $scope.identifier.name;
+					if(selected){
+						_ace.find(selected.replace(/<anonymous>\.(.+)/g, "$1"));	
+					}
+					
+				
+// text.replace(/<anonymous>\.(.+)/g, "$1");
+				// _ace.session.addMarker(new Range(0, 0, 1, 0), "hightlight", "line");
+			});
+
+			// $scope.$watch('identifer',function(){
+			// 	console.log($scope.identifer);
+			// });
 
 			// $scope.retrieveContent = function(path){
 			// 	$http.get(path).success(function(data) {
