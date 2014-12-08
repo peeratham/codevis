@@ -60,7 +60,7 @@ for(var i=0; i<len; i++){
 
 var json = {name:'root', path:'/root',children:[]};
 
-var tree = TreeDiagram(element[0]);
+var tree = TreeDiagramTimeLine(element[0]);
 tree.data(json);
 addNode(json, '/root/lib');
 tree.update();
@@ -109,18 +109,18 @@ var Add = chartsvg.append("path")
         .attr("stroke-width", 2)
         .attr("fill", "none");
 
-var addpoint = chartsvg.append("g")
-		.attr("class", "add-point");
+// var addpoint = chartsvg.append("g")
+// 		.attr("class", "add-point");
 
-addpoint.selectAll('.addcir')
-		.data(addData)
-		.enter().append('circle')
-		.attr("cx", function(d) { return xx(d[0]) })
-		.attr("cy", function(d) { return yy(d[1]) })
-		.attr("r", 3)
-		.attr('class','addcir')
-		.style("fill", "white")
-		.style("stroke", "blue");
+// addpoint.selectAll('.addcir')
+// 		.data(addData)
+// 		.enter().append('circle')
+// 		.attr("cx", function(d) { return xx(d[0]) })
+// 		.attr("cy", function(d) { return yy(d[1]) })
+// 		.attr("r", 3)
+// 		.attr('class','addcir')
+// 		.style("fill", "white")
+// 		.style("stroke", "blue");
 
 var Del = chartsvg.append("path")
         .attr("d", chartFunction(delData))
@@ -128,18 +128,18 @@ var Del = chartsvg.append("path")
         .attr("stroke-width", 2)
         .attr("fill", "none");
 
-var delpoint = chartsvg.append("g")
-		.attr("class", "del-point");
+// var delpoint = chartsvg.append("g")
+// 		.attr("class", "del-point");
 
-delpoint.selectAll('.celcir')
-		.data(delData)
-		.enter().append('circle')
-		.attr("cx", function(d) { return xx(d[0]) })
-		.attr("cy", function(d) { return yy(d[1]) })
-		.attr("r", 3)
-		.attr('class','delcir')
-		.style("fill", "white")
-		.style("stroke", "red");
+// delpoint.selectAll('.celcir')
+// 		.data(delData)
+// 		.enter().append('circle')
+// 		.attr("cx", function(d) { return xx(d[0]) })
+// 		.attr("cy", function(d) { return yy(d[1]) })
+// 		.attr("r", 3)
+// 		.attr('class','delcir')
+// 		.style("fill", "white")
+// 		.style("stroke", "red");
 
 
 chartsvg.append("g")

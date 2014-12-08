@@ -1,11 +1,11 @@
-function TreeDiagram(p) {
+function TreeDiagramTimeLine(p) {
   var firstTime = true;
   var that = {};
   var _parent =  d3.select(p);
-  var _diameter=350;
+  var _diameter=500;
   var _root;
   var duration = 1000;
-  var _treeSize = _diameter/2-5;
+  var _treeSize = _diameter/2-80;
 
   var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name; });
   var zoom = d3.behavior.zoom()
@@ -40,7 +40,6 @@ function TreeDiagram(p) {
 
   that.render = function(){
     _update(_root);
-    _simplifyStructure(8);
   }
   that.update = function(){
     _update();
@@ -76,11 +75,11 @@ function TreeDiagram(p) {
                 }
             )
             .on("contextmenu", rightclick)
-            .on("mouseover", mouseover)
-            .on("mouseout", mouseout)
+            // .on("mouseover", mouseover)
+            // .on("mouseout", mouseout)
             .on("click", leftclick)
-            // .on('mouseover', tip.show)
-            // .on('mouseout', tip.hide)
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
             ;
 
       gnodeEnter.append("circle")
@@ -91,13 +90,7 @@ function TreeDiagram(p) {
       .attr("x", 10)
       .attr("dy", ".35em")
       .attr("text-anchor", "start")
-      .text(function(d) {  
-        if(d.name.length>8){
-          return d.name.substr(0,8)+'...';   
-        }else{
-          return d.name;
-        }
-      })
+      .text(function(d) { return d.name; })
       .style("fill-opacity", 1e-6);
 
       //fix NaN when _nodes <=2
@@ -110,25 +103,16 @@ function TreeDiagram(p) {
         return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; 
       });
 
-      var c=d3.rgb("white");
-
       gnodeUpdate.select("circle")
       .attr("r", 4.5)
       .style("fill", function(d) { 
-          var dependencyNodes = _relations[d.path];
-          // if(dependencyNodes){
-          //   console.log(dependencyNodes);
-          //   return d._children ? "lightsteelblue" : c.brighter(dependencyNodes.length/20).toString();
-          // }
-          
-        return d._children ? "lightsteelblue" : c.toString(); });
+        return d._children ? "lightsteelblue" : "#fff"; });
 
       gnodeUpdate.select("text")
       .style("fill-opacity", 1)
       .attr("transform", function(d) { 
         return d.x < 180 ? "translate(0)" : "rotate(180) translate(-" + (d.name.length + 50)  + ")"; 
       });
-
 
        // Transition exiting nodes to the parent's new position.
        var gnodeExit = gnode.exit().transition()
@@ -149,6 +133,8 @@ function TreeDiagram(p) {
        link.enter().insert("path", "g")
        .attr("class", "link")
        .attr("d", function(d) {
+
+
         if(isToggle){
           var o = {x: parent.x0, y: parent.y0};
           return diagonal({source: o, target: o});
@@ -190,28 +176,11 @@ function TreeDiagram(p) {
         d.x0 = d.x;
         d.y0 = d.y;
       });
-
-      // simplify()
-
   };
-
-  // function simplify(){
-  //     var _nodes = tree.nodes(_root);
-  //     _nodes.forEach(function(d) {
-  //       if(d.children){
-  //         if(d.children.length>5 && d.name!='root'){
-  //           toggle(d);
-  //           _update(d);
-  //         } 
-  //       }
-  //     });
-
-  // }
 
   // Toggle children.
   function toggle(d) {
     if (d.children) {
-      console.log(d);
       d._children = d.children;
       d.children = null;
     } else {
@@ -244,9 +213,6 @@ function TreeDiagram(p) {
 
   function selectMultipleNodes(pathList){ //return list of doms
     var nodes = [];
-    if(pathList == undefined){
-      return [];
-    }
     pathList.forEach(
 
       function(path){
@@ -276,7 +242,6 @@ function TreeDiagram(p) {
 
 
   function mouseover(d) {
-    tip.show(d);
     if(d.path == focusNode){
       return;
     }
@@ -291,14 +256,14 @@ function TreeDiagram(p) {
       if(focusNode==""){
       //update relatedFiles
       relatedNodes = _relations[d.path];
-      relatedPaths = relatedNodes;
+      relatedPaths = _.keys(relatedNodes);
       if(relatedPaths.length>0){
         highlightRelatedFromPath(relatedPaths);
       }
     }
       
     }catch(error){
-      // d.select("circle").style('fill','green','important'); 
+      d.select("circle").style('fill','green','important'); 
     }
     hover = d.path;
     notifyChanges();
@@ -328,14 +293,14 @@ function TreeDiagram(p) {
     console.log('current', focusNode);
     highlightNodesFromPath([focusNode]);
     
-    // console.log('related:',relatedPaths);
+    console.log('related:',relatedPaths);
     unhighlightNodesFromPath(lastRelatedPaths);
 
     relatedNodes = _relations[d.path];
     lastRelatedPaths = relatedPaths;  //saved
-
+    relatedPaths = _.keys(relatedNodes);
     if(relatedPaths.length>0){
-        highlightRelatedFromPath(relatedNodes);
+        highlightRelatedFromPath(relatedPaths);
     }
        // console.log('last',lastFocus);
 
@@ -350,7 +315,7 @@ function TreeDiagram(p) {
       if(focusNode!="" && !isNodeClick){
         // unhighlightNodesFromPath([focusNode]);
              unhighlightNodesFromPath([focusNode]); //unhightlight last focus first
-           unhighlightNodesFromPath(lastRelatedPaths);
+             unhighlightNodesFromPath(relatedPaths);
              focusNode = "";
              relatedPaths = [];
            }
@@ -358,7 +323,6 @@ function TreeDiagram(p) {
 
            notifyChanges();  
       }, 50);
-
   }
 
   function highlightNodesFromPath(paths){   //refactor later to use class #active and d3.selectAll(#active) to unhighlight
@@ -383,7 +347,6 @@ function TreeDiagram(p) {
   }
 
   function mouseout(d) {
-    tip.hide(d);
     if(focusNode!="" && d.path == focusNode){
       hover="";
       notifyChanges();
@@ -391,9 +354,7 @@ function TreeDiagram(p) {
     if(_.contains(relatedPaths, d.path)){ // console.log('already focused');
       return;                             //or make put some glow effect
     }
-    d3.select(this).select("circle").style('fill',function(d) { 
-        return d._children ? "lightsteelblue" : "#fff"; }, "important");
-
+    d3.select(this).select("circle").style('fill','white','important');
     
     unhighlightNodesFromPath(relatedPaths); //unhighlight
     //if there's a focusNode don't reset, keep the relatedFiles of the focusNode
@@ -412,8 +373,9 @@ function TreeDiagram(p) {
     
   }
   
-  that.functions = function(funcs){
-    _functions = funcs;
+  
+  that.metadata = function(meta){
+    _meta = meta;
   };
 
   that.relations = function(relations){
@@ -437,16 +399,6 @@ function TreeDiagram(p) {
   that.listener = function(callback){
     listener = callback;  
   }
-
-  function _simplifyStructure(num){
- //   var nodes = d3.selectAll("g.node");
- //   nodes.forEach(function(d) { 
-    
- //    d.forEach(function(el){
-
- //      });
- //   });
- }
 
   
   that.test = function(){

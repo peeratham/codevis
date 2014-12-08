@@ -60,7 +60,7 @@ ProjectTree.query(function(data) {
 }
 
 		return{
-			template: '<div class="chart col-md-5"></div>',
+			template: '<div></div>',
 			replace: true,
 			link: link, 
 			restrict: 'E' 
