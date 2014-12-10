@@ -73,7 +73,8 @@ codevisControllers.controller('aceCtrl', [ '$scope','$http',
 			$scope.$watch('identifier',function(){
 				var selected = $scope.identifier.name;
 					if(selected){
-						_ace.find(selected.replace(/<anonymous>\.(.+)/g, "$1"));	
+						var key = selected.replace(/<anonymous>\.(.+)/g, "$1");
+						_ace.find(key.trim());	
 					}
 					
 				

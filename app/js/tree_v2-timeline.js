@@ -58,7 +58,7 @@ function TreeDiagramTimeLine(p) {
       var _links = tree.links(_nodes);
 
       // Normalize for fixed-depth.
-      _nodes.forEach(function(d) { d.y = d.depth * 50; });
+      _nodes.forEach(function(d) { d.y = d.depth * 150; });
 
       var gnode = body.selectAll("g.node").data(_nodes, function(d){return d.path});
 

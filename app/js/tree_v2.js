@@ -5,9 +5,9 @@ function TreeDiagram(p) {
   var _diameter=500;
   var _root;
   var duration = 1000;
-  var _treeSize = _diameter/2-5;
+  var _treeSize = _diameter/2-120;
 
-  var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name; });
+  var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name +" :"+d.size; });
   var zoom = d3.behavior.zoom()
     .scaleExtent([0.5, 10])
     .on("zoom", zoomed);
@@ -22,7 +22,7 @@ function TreeDiagram(p) {
 
   var svg = _parent.append("svg")
       .attr("width", _diameter)
-      .attr("height", _diameter-50);
+      .attr("height", _diameter-30);
   var body = svg.append("g")
       .attr("class", 'body')
       .attr("transform", "translate(" + _diameter / 2 + "," + _diameter / 2 + ")");
@@ -35,6 +35,7 @@ function TreeDiagram(p) {
   }
   
     svg.on("click", resetFocus);
+    svg.on("contextmenu", function(){d3.event.preventDefault()});
 
 
 
@@ -59,7 +60,7 @@ function TreeDiagram(p) {
       var _links = tree.links(_nodes);
 
       // Normalize for fixed-depth.
-      _nodes.forEach(function(d) { d.y = d.depth * 50; });
+      _nodes.forEach(function(d) { d.y = d.depth * 120; });
 
       var gnode = body.selectAll("g.node").data(_nodes, function(d){return d.path});
 
@@ -78,10 +79,10 @@ function TreeDiagram(p) {
             .on("contextmenu", rightclick)
             .on("mouseover", mouseover)
             .on("mouseout", mouseout)
-            .on("click", leftclick)
+            .on("click", leftclick);
             // .on('mouseover', tip.show)
             // .on('mouseout', tip.hide)
-            ;
+            
 
       gnodeEnter.append("circle")
       .attr("r", 1e-6)
@@ -92,7 +93,7 @@ function TreeDiagram(p) {
       .attr("dy", ".35em")
       .attr("text-anchor", "start")
       .text(function(d) {  
-        if(d.name.length>8){
+        if(d.name.length>20){
           return d.name.substr(0,8)+'...';   
         }else{
           return d.name;
@@ -195,18 +196,7 @@ function TreeDiagram(p) {
 
   };
 
-  // function simplify(){
-  //     var _nodes = tree.nodes(_root);
-  //     _nodes.forEach(function(d) {
-  //       if(d.children){
-  //         if(d.children.length>5 && d.name!='root'){
-  //           toggle(d);
-  //           _update(d);
-  //         } 
-  //       }
-  //     });
 
-  // }
 
   // Toggle children.
   function toggle(d) {
@@ -285,9 +275,7 @@ function TreeDiagram(p) {
       return; //or make put some glow effect
     }
     try{
-      d3.select(this).select("circle").style('fill','green','important');
-
-      //if don't change relatedFiles when there's a focus
+       //if don't change relatedFiles when there's a focus
       if(focusNode==""){
       //update relatedFiles
       relatedNodes = _relations[d.path];
@@ -295,6 +283,18 @@ function TreeDiagram(p) {
       if(relatedPaths.length>0){
         highlightRelatedFromPath(relatedPaths);
       }
+
+      var c=d3.rgb("green");
+      d3.select(this).select("circle")
+      // .style('fill','green','important');
+       .style("fill", function(d) { 
+          if(relatedNodes){
+            return d._children ? "lightsteelblue" : c.darker(relatedPaths.length/5).toString();
+          }
+          
+        return d._children ? "lightsteelblue" : c.toString(); }, "important");
+
+     
     }
       
     }catch(error){
